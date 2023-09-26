@@ -2,6 +2,22 @@ MIT License
 
 Copyright (c) 2023 CubaDevOps
 
+This project is provided under the terms of the MIT License. However, please note the following:
+
+1. This project is privately owned, and no rights are granted to use, distribute, or sublicense it beyond its public display on GitHub.
+
+2. Permission is not granted to modify this project for the purpose of redistributing it as a standalone product.
+
+3. Any contributions to the project will be considered collaboration under the terms of the MIT License and do not grant additional rights over the project.
+
+4. The project owner reserves all rights not expressly granted by this license.
+
+For more information about the MIT License, please refer to the LICENSE file in this repository.
+
+<hr>
+
+MIT License
+
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
