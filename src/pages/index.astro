@@ -1,5 +1,9 @@
 ---
+import "../styles/global.css";
+import Navigation from "../components/Navigation.astro";
+import Footer from "../components/Footer.astro";
 
+const pageTitle = 'CubaDevOps Blog';
 ---
 
 <html lang="en">
@@ -8,14 +12,13 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>CubaDevOps Blog</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Home</a>
-		<a href="/about/">About</a>
-		<a href="/blog/">Blog</a>
+		<Navigation />
 
-		<h1>CubaDevOps Blog</h1>
+		<h1>{pageTitle}</h1>
 		<h2>coming soon</h2>
+		<Footer />
 	</body>
 </html>
