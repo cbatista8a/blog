@@ -1,0 +1,21 @@
+---
+import Link from './Link.astro';
+const linkcolor = "black";
+const linkhover = "black";
+---
+<style define:vars={{ linkcolor, linkhover }}>
+    nav a {
+        color: var(--linkcolor);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    nav a:visited {
+        color: var(--linkhover);
+    }
+</style>
+
+<nav>
+    <Link url="/" text="Inicio"/>
+    <Link url="/about/" text="Sobre mi"/>
+    <Link url="/blog/" text="Blog"/>
+</nav>
