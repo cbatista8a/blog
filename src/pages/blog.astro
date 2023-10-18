@@ -1,38 +1,7 @@
 ---
-import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
-import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <title>CubaDevOps Blog | Blog</title>
-    </head>
-    <body>
-        <Navigation />
-
-        <h1>Mi blog de Astro aprendizaje</h1>
-        <p>Aquí es donde publicaré sobre mi viaje de aprendizaje Astro.</p>
-
-        <p>
-            I am working through Astro's introductory tutorial. This is the
-            second page on my website, and it's the first one I built myself!
-        </p>
-
-        <p>
-            This site will update as I complete more of the tutorial, so keep
-            checking back and see how my journey is going!
-        </p>
-        <ul>
-            <li><a href="/posts/welcome/">Publicación 1</a></li>
-            <li><a href="/posts/post-2/">Publicación 2</a></li>
-            <li><a href="/posts/post-3/">Publicación 3</a></li>
-        </ul>
-
-        <Footer />
-    </body>
-</html>
+<Layout pageTitle="Blog">
+    Mi primer slot usando plantillas
+</Layout>
