@@ -1,5 +1,5 @@
 ---
-const { url, text, target = "_self", rel = "follow" } = Astro.props;
+const { url, text, target = "_self", rel = "follow", type= "link" } = Astro.props;
 ---
 
-<a href={url} target={target} rel={rel}>{text}</a>
+<a href={url} target={target} rel={rel} type={type}>{text}</a>
