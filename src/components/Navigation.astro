@@ -1,21 +1,22 @@
 ---
-import Link from './Link.astro';
+import Link from "./Link.astro";
 const linkcolor = "black";
-const linkhover = "black";
+const linkhover = "purple";
 ---
-<style define:vars={{ linkcolor, linkhover }}>
-    nav a {
-        color: var(--linkcolor);
-        text-decoration: none;
-        cursor: pointer;
-    }
-    nav a:visited {
-        color: var(--linkhover);
+
+<style>
+    nav {
+        display: grid;
+        grid-auto-flow: column;
+        gap: 0.5rem;
+        align-content: center;
+        justify-content: end;
+        align-items: center;
     }
 </style>
 
-<nav>
-    <Link url="/" text="Inicio"/>
-    <Link url="/about/" text="Sobre mi"/>
-    <Link url="/blog/" text="Blog"/>
+<nav class="header-navbar">
+    <Link url="/" text="Inicio" color={linkcolor} hover={linkhover} /> |
+    <Link url="/about/" text="Sobre mi" color={linkcolor} hover={linkhover} /> |
+    <Link url="/blog/" text="Blog" color={linkcolor} hover={linkhover}/>
 </nav>
