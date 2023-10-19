@@ -3,7 +3,7 @@ import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
-const {pageTitle = "Blog"} = Astro.props;
+const { pageTitle = "Blog" } = Astro.props;
 ---
 
 <html lang="es">
@@ -15,15 +15,14 @@ const {pageTitle = "Blog"} = Astro.props;
         <title>{pageTitle} | CubaDevOps Blog</title>
     </head>
     <body>
-        <Header/>
+        <Header />
 
         <h1>{pageTitle}</h1>
 
         <main>
             <slot />
         </main>
-        
-        
+
         <Footer />
     </body>
 </html>
