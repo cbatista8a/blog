@@ -1,0 +1,167 @@
+/* Estilos generales de la página */
+:root {
+    --theme-light: #fff;
+    --theme-dark: #333;
+    --color-orange: rgb(197, 129, 5);
+    --color-orange-hover: rgb(252, 191, 121);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background-color: var(--theme-light);
+    font-family: sans-serif 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--theme-dark);
+    color: var(--theme-light);
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+h1 {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+}
+
+.hamburger {
+    padding-right: 20px;
+    cursor: pointer;
+}
+
+.hamburger .line {
+    display: block;
+    width: 40px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: var(--color-orange);
+}
+
+.container {
+    padding: 20px;
+}
+
+/* Encabezado */
+.header {
+    background-color: #222;
+    /* Fondo del encabezado */
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navegación */
+.navbar {
+    background-color: #111;
+    /* Fondo de la barra de navegación */
+    padding: 10px 0;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 18px;
+}
+
+/* Contenido del blog */
+.post {
+    background-color: #444;
+    /* Fondo de las entradas del blog */
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.post h2 {
+    font-size: 24px;
+}
+
+.post p {
+    font-size: 16px;
+}
+
+/* Pie de página */
+.footer {
+    background-color: #222;
+    /* Fondo del pie de página */
+    padding: 10px;
+    text-align: center;
+    color: #888;
+    /* Texto gris claro */
+}
+
+/* Enlaces */
+a {
+    color: var(--color-orange);
+    /* Enlaces azules */
+}
+
+a:hover {
+    color: var(--color-orange-hover);
+    /* Color más oscuro al pasar el ratón */
+}
+
+/* Header/Blog Title */
+.banner {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    background: rgb(49, 48, 48);
+}
+
+/* Create two unequal columns that floats next to each other */
+/* Left column */
+.leftcolumn {
+    width: 75%;
+    text-align: center;
+}
+
+/* Right column */
+.rightcolumn {
+    width: 25%;
+    text-align: center;
+}
+
+
+.row {
+    display: flex;
+    clear: both;
+    justify-items: stretch;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 1rem;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+
+    .leftcolumn,
+    .rightcolumn {
+        width: 100%;
+        padding: 0;
+    }
+}
