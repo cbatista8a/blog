@@ -2,9 +2,11 @@
 const { length, currentUrl, currentPage, firstUrl, prevUrl, nextUrl, lastUrl } =
     Astro.props;
 const paginationList = Array.from({ length }, (_, i) => i + 1);
+const orange_color = "#ffb42b";
+const orange_color_hover = "#fcbf79";
 ---
 
-<nav aria-label="Blog pages" class="pagination pagination-default">
+<nav aria-label="Blog Pages" class="pagination pagination-default">
     {
         firstUrl == currentUrl ? (
             <span class="pagination__link disabled">
@@ -71,25 +73,38 @@ const paginationList = Array.from({ length }, (_, i) => i + 1);
     }
 </nav>
 
-<style>
+<style define:vars={{orange_color,orange_color_hover}}>
+    i.pi-angle-left,i.pi-angle-right{
+        fill: var(--orange_color);
+    }
+    i.pi-angle-left:hover,i.pi-angle-right:hover {
+        fill: var(--orange_color_hover);
+    }
     i.pi-angle-left.doubled {
         margin-right: -15px;
     }
     i.pi-angle-left {
         width: 20px;
         height: 20px;
-        background-image: url('../../public/arrow-left.svg');
+        background-image: url("../../public/arrow-left.svg");
         background-size: cover;
         display: inline-block;
     }
     i.pi-angle-right {
         width: 20px;
         height: 20px;
-        background-image: url('../../public/arrow-right.svg');
+        background-image: url("../../public/arrow-right.svg");
         background-size: cover;
         display: inline-block;
     }
     i.pi-angle-right.doubled {
         margin-left: -15px;
+    }
+    .pagination {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        flex-direction: row;
+        gap: 5px;
     }
 </style>
