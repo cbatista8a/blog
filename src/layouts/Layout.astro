@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css";
+import "../styles/darkula.css";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 
@@ -17,12 +17,27 @@ const { pageTitle = "Blog" } = Astro.props;
     <body>
         <Header />
 
-        <h1>{pageTitle}</h1>
+        <div class="banner">
+            <h1>{pageTitle}</h1>
+        </div>
 
-        <main>
-            <slot />
-        </main>
+        <div class="row">
+            <div class="leftcolumn">
+                <main>
+                    <slot name="content" />
+                </main>
+            </div>
+            <div class="rightcolumn">
+                <slot name="sidebar" />
+            </div>
+        </div>
 
-        <Footer />
+        <footer>
+            <Footer />
+        </footer>
     </body>
 </html>
+
+<style>
+    
+</style>
