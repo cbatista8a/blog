@@ -12,7 +12,7 @@ const { pageTitle = "Blog" } = Astro.props;
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <meta name="color-scheme" content="dark">
+        <meta name="color-scheme" content="dark" />
         <title>{pageTitle} | CubaDevOps Blog</title>
     </head>
     <body>
@@ -22,16 +22,16 @@ const { pageTitle = "Blog" } = Astro.props;
             <h1>{pageTitle}</h1>
         </div>
 
-        <div class="row">
-            <div class="leftcolumn">
-                <main>
+        <main>
+            <div class="row">
+                <div class="leftcolumn">
                     <slot name="content" />
-                </main>
+                </div>
+                <div class="sidebar">
+                    <slot name="sidebar" />
+                </div>
             </div>
-            <div class="rightcolumn">
-                <slot name="sidebar" />
-            </div>
-        </div>
+        </main>
 
         <footer>
             <Footer />
@@ -39,6 +39,4 @@ const { pageTitle = "Blog" } = Astro.props;
     </body>
 </html>
 
-<style>
-    
-</style>
+<style></style>
