@@ -4,8 +4,8 @@ excerpt: Descubre los 5 consejos esenciales para desarrolladores novatos en el e
 publishDate: 'Oct 5 2023'
 featureImage:
   src: '/posts/beginer.png'
-  alt: Desarrollo Web
-isFeatured: true
+  alt:  Web Form Ui
+isFeatured: false
 seo:
   image:
     src: '/posts/beginer.jpg'
@@ -44,3 +44,5 @@ El desarrollo web es un campo colaborativo. Únete a comunidades en línea, foro
 El desarrollo web a menudo implica solucionar problemas complejos. Desarrolla una mentalidad de resolución de problemas y no te desanimes cuando te enfrentes a desafíos. Cada obstáculo es una oportunidad para aprender y mejorar tus habilidades.
 
 __Espero que estos consejos te sirvan de guia!__
+
+Suscribete para recibir nuevos articulos cada semana en tu correo 📧
