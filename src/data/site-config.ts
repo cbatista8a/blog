@@ -42,13 +42,13 @@ export type SiteConfig = {
 const siteConfig: SiteConfig = {
     logo: {
         src: '/logo.svg',
-        alt: 'CubaDevOps logo'
+        alt: 'Carlos Batista profile photo'
     },
-    title: 'CubaDevOps Blog',
-    description: 'Astro.js and Tailwind CSS theme for blogging',
+    title: 'Carlos Batista Blog',
+    description: 'Blog Personal sobre desarrollo de software y tecnología',
     image: {
-        src: '/ovidius-preview.jpg',
-        alt: 'CubaDevOps Blog using Astro.js'
+        src: '',
+        alt: 'Este Blog usa Astro.js'
     },
     primaryNavLinks: [
         {
@@ -64,7 +64,7 @@ const siteConfig: SiteConfig = {
         //     href: '/about'
         // },
         {
-            text: 'Contact',
+            text: 'Contacto',
             href: '/contact'
         },
         {
@@ -78,11 +78,11 @@ const siteConfig: SiteConfig = {
         //     href: '/about'
         // },
         {
-            text: 'Terms of Service',
+            text: 'Terminos de Uso',
             href: '/terms'
         },
         {
-            text: 'Contact',
+            text: 'Contacto',
             href: '/contact'
         },
         {
@@ -92,18 +92,18 @@ const siteConfig: SiteConfig = {
     ],
     socialLinks: [
         {
-            text: 'Go to GitHub repo',
-            href: 'https://github.com/cubadevops',
+            text: 'Mira mi GitHub',
+            href: 'https://github.com/cbatista8a',
             icon: 'github'
         },
         {
-            text: 'Follow on Instagram',
-            href: 'https://instagram.com/cubadevops',
+            text: 'Sigueme en Instagram',
+            href: 'https://instagram.com/carlosbatista8a',
             icon: 'instagram'
         }
     ],
     hero: {
-        title: 'Bienvenido a mi Blog',
+        title: 'Blog de Carlos Batista',
         text: `Aquí hablamos sobre desarrollo de software y tecnologia en general.
         Y si buscas un experto en Prestashop o Desarrollo Web con PHP, estoy aquí para colaborar en proyectos desafiantes y llevar tu negocio al siguiente nivel.`,
         avatar: {
@@ -117,7 +117,7 @@ const siteConfig: SiteConfig = {
     subscribe: {
         title: 'Suscríbete a nuestra Newsletter',
         text: 'Un Post semanal directamente en tu inbox.',
-        formUrl: 'https://',
+        formUrl: '#',
         textBtn: 'Suscríbete'
     },
     postsPerPage: 5
