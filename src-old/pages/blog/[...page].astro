@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import BlogThumb from "../../components/BlogThumb.astro";
+import Pagination from "../../components/Pagination.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+  const posts_per_page = 1;
+  const allPosts = await getCollection("posts");
+  const ordered_posts = allPosts.sort((a, b) => new Date(a.data.pubDate) - new Date(b.data.pubDate)).reverse();
+  return paginate(ordered_posts, { pageSize: posts_per_page });
+}
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname.split('/');
+const firstPath = pathname[1];
+---
+
+<Layout pageTitle="Blog">
+    <div slot="content" class="blog-content">
+		<h2>Ultimas entradas : {page.currentPage }</h2>
+        <ul>
+            {page.data.map((post) => 
+                <li>
+                    <BlogThumb 
+                    url={`/posts/${post.slug}/`} 
+                    title={post.data.title}
+                    description={post.data.description}
+                    date={post.data.pubDate}
+                    img={post.data.image.url}>
+                </li>
+            )}
+        </ul>
+
+        <Pagination length={page.lastPage} 
+            currentUrl={page.url.current} 
+            currentPage={page.currentPage} 
+            firstUrl={`/${firstPath}`} 
+            prevUrl={page.url.prev} 
+            nextUrl={page.url.next} 
+            lastUrl={`/${firstPath}/${page.lastPage}`}
+        />
+	</div>
+	<div slot="sidebar">
+		Newsletter Form
+	</div>
+</Layout>
+
+
+
+<style>
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+    li {
+        list-style: none;
+        height: 400px;
+        width: 250px;
+    }
+    .blog-content{
+        border: 1px solid #ff9776;
+        border-radius: 5px;
+    }
+</style>

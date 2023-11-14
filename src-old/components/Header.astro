@@ -1,0 +1,19 @@
+---
+import Navigation from "./Navigation.astro";
+import Hamburguer from "./Hamburguer.astro";
+import { ViewTransitions } from 'astro:transitions';
+---
+
+<style>
+    header {
+        width: 100%;
+        display: inline-flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+</style>
+<ViewTransitions />
+<header>
+    <Hamburguer />
+    <Navigation />
+</header>
