@@ -1,10 +1,12 @@
 ---
 import siteConfig from '../data/site-config.ts';
-
 const subscribe = siteConfig.subscribe;
+
+import '@dmuy/toast/dist/mdtoast.css';
 
 const { class: className } = Astro.props;
 ---
+
 
 {
     (subscribe?.title || subscribe?.text || subscribe?.formUrl) && (
@@ -26,7 +28,7 @@ const { class: className } = Astro.props;
                         </label>
                         <input
                             type="email"
-                            name="EMAIL"
+                            name="email"
                             id="mce-EMAIL"
                             class="w-full h-11 px-5 py-2 text-slate-700 bg-white border border-slate-200 rounded-full placeholder:text-slate-500 focus:outline-none"
                             required=""
@@ -39,7 +41,7 @@ const { class: className } = Astro.props;
                             id="mc-embedded-subscribe"
                             class="w-full px-8 py-2.5 inline-flex gap-1.5 justify-center items-center font-semibold bg-primary text-white rounded-full transition duration-300 hover:shadow-button sm:w-auto"
                         >
-                        {subscribe?.textBtn}
+                            {subscribe?.textBtn}
                         </button>
                     </form>
                 )}
@@ -47,3 +49,55 @@ const { class: className } = Astro.props;
         </section>
     )
 }
+
+<script>
+    import mdtoast from '@dmuy/toast';
+    const form: HTMLFormElement | null = document.querySelector('#mc-embedded-subscribe-form');
+    const email = form?.querySelector('input[name="email"]');
+
+    form?.addEventListener('submit', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        signUp();
+    });
+
+    function signUp() {
+        console.log("registered to newsletter",email?.value);
+        if (!form?.checkValidity()) {
+            mdtoast.error(form?.validationMessage, {duration: 5000, position: 'bottom right'});
+            // return;
+        } else {
+            fetch('https://api.sendgrid.com/v3/marketing/contacts', {
+                method: 'PUT',
+                headers: {
+                    Authorization: 'Bearer ' + import.meta.env.PUBLIC_SENDGRID_KEY,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    list_ids: [import.meta.env.PUBLIC_SENDGRID_LIST],
+                    contacts: [
+                        {
+                            email: email?.value,
+                            custom_fields: {
+                                e1_T: 'true'
+                            }
+                        }
+                    ]
+                })
+            })
+                .then((response) => response.json())
+                .then((response) => {
+                    if (response.job_id) {
+                        mdtoast.success('Ahora estarás actualizado!!!', {duration: 5000, position: 'bottom right'});
+                    } else {
+                        mdtoast.error('Ops!! Algo ha ido mal, intenta mas tarde.', {duration: 5000, position: 'bottom right'});
+                    }
+                })
+                .catch((error) => {
+                    console.error(error.status, error.statusText);
+                    mdtoast.error('Ops!! Algo ha ido mal, intenta mas tarde.', {duration: 5000, position: 'bottom right'});
+                });
+            form?.reset();
+        }
+    }
+</script>
