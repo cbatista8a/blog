@@ -6,6 +6,7 @@ featureImage:
   src: '/posts/beginer.png'
   alt:  Web Form Ui
 isFeatured: false
+draft: false
 seo:
   image:
     src: '/posts/beginer.jpg'

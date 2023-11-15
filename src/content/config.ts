@@ -26,6 +26,7 @@ const blog = defineCollection({
             })
             .optional(),
         isFeatured: z.boolean().default(false),
+        draft: z.boolean().default(true),
         seo: seoSchema.optional()
     })
 });

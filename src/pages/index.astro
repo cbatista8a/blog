@@ -10,8 +10,8 @@ import { sortPostsByDateDesc } from '../utils/post-utils';
 import Subscribe from '../components/Subscribe.astro';
 
 const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
-const featuredPosts = posts.filter(({ data }) => data.isFeatured);
-const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
+const featuredPosts = posts.filter(({ data }) => data.isFeatured && !data.draft);
+const latestPosts = posts.filter(({ data }) => !data.isFeatured && !data.draft).slice(0, 3);
 ---
 
 <NoHeaderLayout title="Home" description={siteConfig.description} image={siteConfig.image}>

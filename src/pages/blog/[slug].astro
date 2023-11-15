@@ -8,7 +8,7 @@ import { sortPostsByDateDesc } from '../../utils/post-utils';
 import Subscribe from '../../components/Subscribe.astro';
 
 export async function getStaticPaths() {
-    const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+    const posts = (await getCollection('blog')).sort(sortPostsByDateDesc).filter(({ data }) => !data.draft);
     const postCount = posts.length;
     return posts.map((post, index) => ({
         params: { slug: post.slug },

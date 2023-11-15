@@ -6,6 +6,7 @@ featureImage:
   src: '/posts/errors.jpeg'
   alt: Desarrolladores Web
 isFeatured: true
+draft: false
 seo:
   image:
     src: '/posts/errors.jpeg'
