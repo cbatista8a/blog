@@ -72,6 +72,9 @@ jobs:
             --site "${{ steps.pages.outputs.origin }}" \
             --base "${{ steps.pages.outputs.base_path }}"
         working-directory: ${{ env.BUILD_PATH }}
+        env:
+          PUBLIC_SENDGRID_KEY: ${{ vars.PUBLIC_SENDGRID_KEY }}
+          PUBLIC_SENDGRID_LIST: ${{ vars.PUBLIC_SENDGRID_LIST }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
