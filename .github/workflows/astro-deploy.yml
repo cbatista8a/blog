@@ -58,8 +58,8 @@ jobs:
           fi
       - name: Create .env file
         run: |
-          echo "${{ vars.PUBLIC_SENDGRID_KEY }}" > .env.production
-          echo "${{ vars.PUBLIC_SENDGRID_LIST }}" >> .env.production
+          echo "PUBLIC_SENDGRID_KEY=${{ vars.PUBLIC_SENDGRID_KEY }}" > .env.production
+          echo "PUBLIC_SENDGRID_LIST=${{ vars.PUBLIC_SENDGRID_LIST }}" >> .env.production
           cat .env.production
       - name: Setup Node
         uses: actions/setup-node@v3
