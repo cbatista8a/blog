@@ -66,7 +66,6 @@ const { class: className } = Astro.props;
 
 
 <script>
-    console.log('newsletter loaded');
     import mdtoast from '@dmuy/toast';
     const form: HTMLFormElement | null = document.querySelector('#mc-embedded-subscribe-form');
     const email = form?.querySelector('input[name="email"]');
@@ -116,13 +115,16 @@ const { class: className } = Astro.props;
             form?.reset();
         }
     }
-    window._turnstileCb = function () {
-        console.debug('_turnstileCb called');
-
+    window.renderCaptcha = function () {
+        console.debug('captcha rendered');
         turnstile.render('#captcha', {
         sitekey: '0x4AAAAAAANYKAMKY56KG01M',
         theme: 'light',
-        });
+    });
     }
+    document.addEventListener('astro:page-load', () => {
+        renderCaptcha();
+    })
+
 </script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=_turnstileCb" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=renderCaptcha" async defer></script>
