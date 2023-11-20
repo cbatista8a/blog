@@ -66,6 +66,7 @@ const { class: className } = Astro.props;
 
 
 <script>
+    console.log('newsletter loaded');
     import mdtoast from '@dmuy/toast';
     const form: HTMLFormElement | null = document.querySelector('#mc-embedded-subscribe-form');
     const email = form?.querySelector('input[name="email"]');
