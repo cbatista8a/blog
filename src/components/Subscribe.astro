@@ -118,7 +118,7 @@ const { class: className } = Astro.props;
     window.renderCaptcha = function () {
         console.debug('captcha rendered');
         turnstile.render('#captcha', {
-        sitekey: '0x4AAAAAAANYKAMKY56KG01M',
+        sitekey: import.meta.env.PUBLIC_CAPTCHA,
         theme: 'light',
     });
     }

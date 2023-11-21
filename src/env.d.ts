@@ -3,6 +3,7 @@
 interface ImportMetaEnv {
     readonly PUBLIC_SENDGRID_KEY: string;
     readonly PUBLIC_SENDGRID_LIST: string;
+    readonly PUBLIC_CAPTCHA: string;
     // más variables de entorno...
   }
   
