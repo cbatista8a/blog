@@ -21,7 +21,8 @@ export async function GET(context) {
     const posts = (await getCollection('blog')).sort(sortPostsByDateDesc).filter(({data}) => !data.draft);
     const items = await Promise.all(posts.map(async (item) => {
         const image = await getImage({ src: item.data.featureImage.src, width: 1080, height: 720 });
-        const image_length = await getFileSizeInKb(`../../public${image.src}`);
+        const base_path = import.meta.env.DEV ? 'public' : '';
+        const image_length = await getFileSizeInKb(`../../${base_path}${image.src}`);
         return {
             title: item.data.title,
             description: item.data.excerpt,
