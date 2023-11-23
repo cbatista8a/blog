@@ -92,6 +92,11 @@ const siteConfig: SiteConfig = {
     ],
     socialLinks: [
         {
+            text: 'Conecta en Linkedin',
+            href: 'https://linkedin.com/in/cbatista8a',
+            icon: 'linkedin'
+        },
+        {
             text: 'Mira mi GitHub',
             href: 'https://github.com/cbatista8a',
             icon: 'github'
