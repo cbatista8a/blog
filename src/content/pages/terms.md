@@ -1,49 +1,50 @@
 ---
-title: Terms of Service
+title: Términos de Servicio
 ---
 
-**Last updated on June 1, 2023**
+**Última actualización el 28 de Noviembre de 2023**
 
-These Terms of Service ("Terms") govern your access to and use of [Website Name] ("the Website") and any related services provided by [Website Owner/Company] ("we," "us," or "our"). Please read these Terms carefully before using the Website.
+Estos *Términos de Servicio* ("Términos") rigen tu acceso y uso del Blog de Carlos Batista ("el Sitio Web") y cualquier servicio relacionado proporcionado por Carlos Batista o CubaDevOps ("nosotros," "nos" o "nuestro"). Lee estos Términos cuidadosamente antes de utilizar el Sitio Web.
 
-**1. Acceptance of Terms**
+## 1. Aceptación de los Términos
 
-By accessing or using the Website, you agree to be bound by these Terms and our Privacy Policy. If you do not agree to these Terms or the Privacy Policy, please do not use the Website.
+Al acceder o utilizar el Sitio Web, aceptas quedar sujeto a estos Términos y nuestra *Política de Privacidad*. Si no estás de acuerdo con estos Términos o la Política de Privacidad, por favor, no utilices el Sitio Web.
 
-**2. Changes to Terms**
+## 2. Cambios en los Términos
 
-We reserve the right to modify, amend, or update these Terms at any time. Such changes will be effective upon posting on the Website. It is your responsibility to review these Terms regularly. Your continued use of the Website after any changes indicates your acceptance of the revised Terms.
+Nos reservamos el derecho de modificar, enmendar o actualizar estos Términos en cualquier momento. Dichos cambios serán efectivos al publicarse en el Sitio Web. Es tu responsabilidad revisar estos Términos regularmente. Tu uso continuado del Sitio Web después de cualquier cambio indica tu aceptación de los Términos revisados.
 
-**3. Use of the Website**
+## 3. Uso del Sitio Web
 
-You agree to use the Website for lawful purposes and in a manner consistent with these Terms. You are responsible for any content you post or submit on the Website.
+Aceptas utilizar el Sitio Web para fines legítimos y de acuerdo con estos Términos. Eres responsable de cualquier contenido que publiques o envíes en el Sitio Web.
 
-**4. Registration and Account**
+## 4. Registro y Cuenta
 
-Certain areas of the Website may require registration or the creation of an account. You agree to provide accurate, current, and complete information during the registration process and to update such information to keep it accurate, current, and complete. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+Ciertas áreas del Sitio Web pueden requerir registro o la creación de una cuenta. Aceptas proporcionar información precisa, actual y completa durante el proceso de registro y actualizar dicha información para mantenerla precisa, actual y completa. Eres responsable de mantener la confidencialidad de tus credenciales de cuenta y de todas las actividades que ocurran bajo tu cuenta.
 
-**5. Content and Intellectual Property**
+## 5. Contenido y Propiedad Intelectual
 
-The content on the Website, including text, graphics, logos, images, audio, video, software, and other materials, is owned or licensed by us and is protected by copyright and other intellectual property laws. You may not use, reproduce, or distribute the content without our prior written consent.
+El contenido en el Sitio Web, incluyendo texto, gráficos, logotipos, imágenes, audio, video, software y otros materiales, es propiedad o está licenciado por nosotros y está protegido por leyes de derechos de autor y otras leyes de propiedad intelectual. No puedes usar, reproducir o distribuir el contenido sin nuestro consentimiento por escrito previo.
 
-**6. Third-Party Links**
+## 6. Enlaces de Terceros
 
-The Website may contain links to third-party websites or resources. We do not endorse and are not responsible for the content, products, or services provided by third parties. Your use of such websites is at your own risk.
+El Sitio Web puede contener enlaces a sitios web o recursos de terceros. No respaldamos y no somos responsables del contenido, productos o servicios proporcionados por terceros. Tu uso de dichos sitios web está bajo tu propio riesgo.
 
-**7. Termination**
+## 7. Terminación
 
-We may, at our sole discretion, terminate or suspend your access to the Website at any time and for any reason, without notice.
+Podemos, a nuestra entera discreción, terminar o suspender tu acceso al Sitio Web en cualquier momento y por cualquier motivo, sin previo aviso.
 
-**8. Disclaimer**
+## 8. Descargo de Responsabilidad
 
-The Website and its content are provided on an "as is" and "as available" basis. We make no warranties or representations about the accuracy or completeness of the content. We do not guarantee that the Website will be error-free or uninterrupted.
+El Sitio Web y su contenido se proporcionan "tal cual" y "según disponibilidad". No hacemos garantías ni representaciones sobre la precisión o integridad del contenido. No garantizamos que el Sitio Web sea libre de errores o ininterrumpido.
 
-**9. Limitation of Liability**
+## 9. Limitación de Responsabilidad
 
-To the fullest extent permitted by law, we shall not be liable for any direct, indirect, incidental, special, consequential, or exemplary damages, including but not limited to damages for loss of profits, goodwill, use, data, or other intangible losses, arising out of or in connection with the use or inability to use the Website.
+En la medida máxima permitida por la ley, no seremos responsables por daños directos, indirectos, incidentales, especiales, consecuentes o ejemplares, incluyendo, pero no limitado a, daños por pérdida de beneficios, buena voluntad, uso, datos u otros daños intangibles, derivados del uso o la incapacidad de usar el Sitio Web.
 
-**10. Governing Law**
+## 10. Ley Aplicable
 
-These Terms are governed by and construed in accordance with the laws of [Your Jurisdiction], without regard to its conflict of laws principles. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts of [Your Jurisdiction].
+Estos Términos se rigen y se interpretan de acuerdo con las leyes de Italia, sin tener en cuenta sus principios de conflicto de leyes. Cualquier disputa que surja bajo estos Términos estará sujeta a la jurisdicción exclusiva de los tribunales de Italia.
 
-_Thank you for reading our Terms of Service. By using the Website, you agree to be bound by these Terms._
+*Gracias por leer nuestros Términos de Servicio. Al utilizar el Sitio Web, aceptas quedar sujeto a estos Términos.*
+
