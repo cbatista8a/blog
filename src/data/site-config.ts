@@ -121,7 +121,7 @@ const siteConfig: SiteConfig = {
     },
     subscribe: {
         title: 'Suscríbete a nuestra Newsletter',
-        text: 'Un Post semanal directamente en tu inbox.',
+        text: 'Un resumen semanal directamente en tu inbox',
         formUrl: '#',
         textBtn: 'Suscríbete'
     },
