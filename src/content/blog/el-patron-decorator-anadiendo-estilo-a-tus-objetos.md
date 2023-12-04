@@ -97,4 +97,4 @@ En este ejemplo, el Patrón Decorator nos permite añadir opciones de decoració
 
 El Patrón Decorator es una herramienta poderosa para extender las funcionalidades de nuestros objetos de manera flexible. Nos permite componer y apilar comportamientos de forma dinámica, manteniendo la coherencia en el código.
 
-¡Sigue extendiendo tus objetos y construyendo software más versátil con el Patrón Decorator! ☕🎨 
+¡Sigue extendiendo tus objetos y construyendo software más versátil con el Patrón Decorator! ☕🎨.
