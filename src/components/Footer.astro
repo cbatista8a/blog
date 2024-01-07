@@ -27,7 +27,12 @@ const secondaryNavLinks = siteConfig.secondaryNavLinks || [];
             </div>
         )
     }
-    <p class="text-center text-xs uppercase tracking-wider text-slate-700">
-        &copy; {new Date().getFullYear()}&nbsp;<a class="text-primary underline hover:no-underline" href="/">{siteConfig.title}</a>. All rights reserved.
-    </p>
+    <div class="flex flex-wrap gap-1 justify-evenly items-center">
+        <div id="wcb" class="carbonbadge flex items-center"></div>
+        <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+        <p class=" text-xs uppercase tracking-wider text-slate-700">
+            &copy; {new Date().getFullYear()}&nbsp;<a class="text-primary underline hover:no-underline" href="/">{siteConfig.title}</a>. All rights reserved.
+        </p>
+    </div>
+    
 </footer>
