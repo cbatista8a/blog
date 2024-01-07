@@ -1,0 +1,18 @@
+---
+const { url, text, target = "_self", rel = "follow", type= "link", color="black",hover="purple",visited="black" } = Astro.props;
+---
+
+<a href={url} target={target} rel={rel} type={type}>{text}</a>
+
+<style define:vars={{color,hover,visited}}>
+    a {
+        text-decoration: none;
+        color: var(--color);
+    }
+    a:hover {
+        color: var(--hover) !important;
+    }
+    a:visited {
+        color: var(--visited);
+    }
+</style>

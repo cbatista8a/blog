@@ -34,6 +34,7 @@ export type SiteConfig = {
     primaryNavLinks?: Link[];
     secondaryNavLinks?: Link[];
     socialLinks?: SocialLink[];
+    personalLinks?: Link[];
     hero?: Hero;
     subscribe?: Subscribe;
     postsPerPage?: number;
@@ -59,10 +60,10 @@ const siteConfig: SiteConfig = {
             text: 'Blog',
             href: '/blog'
         },
-        // {
-        //     text: 'About',
-        //     href: '/about'
-        // },
+        {
+            text: 'About',
+            href: '/about'
+        },
         {
             text: 'Contacto',
             href: '/contact'
@@ -105,6 +106,24 @@ const siteConfig: SiteConfig = {
             text: 'Sigueme en Instagram',
             href: 'https://instagram.com/carlosbatista8a',
             icon: 'instagram'
+        }
+    ],
+    personalLinks: [
+        {
+            href: 'https://cubadevops.com/',
+            text: 'Web'
+        },
+        {
+            href: 'https://blog.cubadevops.com/',
+            text: 'Blog'
+        },
+        {
+            href: 'https://linkedin.com/in/cbatista8a',
+            text: 'Linkedin'
+        },
+        {
+            href: 'https://github.com/cbatista8a',
+            text: 'GitHub'
         }
     ],
     hero: {
