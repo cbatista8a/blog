@@ -57,7 +57,7 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Blog',
+            text: 'Articles',
             href: '/blog'
         },
         {
@@ -111,10 +111,10 @@ const siteConfig: SiteConfig = {
     personalLinks: [
         {
             href: 'https://cubadevops.com/',
-            text: 'Web'
+            text: 'Business'
         },
         {
-            href: 'https://blog.cubadevops.com/',
+            href: 'https://carlosbatista.dev/',
             text: 'Blog'
         },
         {
