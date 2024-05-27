@@ -57,7 +57,7 @@ const siteConfig: SiteConfig = {
             href: '/'
         },
         {
-            text: 'Articles',
+            text: 'Artículos',
             href: '/blog'
         },
         {
@@ -69,7 +69,7 @@ const siteConfig: SiteConfig = {
             href: '/contact'
         },
         {
-            text: 'Company',
+            text: 'Empresa',
             href: 'https://cubadevops.com'
         }
     ],
@@ -87,7 +87,7 @@ const siteConfig: SiteConfig = {
             href: '/contact'
         },
         {
-            text: 'Company',
+            text: 'Empresa',
             href: 'https://cubadevops.com'
         }
     ],
