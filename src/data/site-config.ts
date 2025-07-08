@@ -34,7 +34,7 @@ export type SiteConfig = {
     primaryNavLinks?: Link[];
     secondaryNavLinks?: Link[];
     socialLinks?: SocialLink[];
-    personalLinks?: Link[];
+    personalLinks?: SocialLink[];
     hero?: Hero;
     subscribe?: Subscribe;
     postsPerPage?: number;
@@ -42,35 +42,27 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
     logo: {
-        src: '/logo.svg',
+        src: '/logo_carlos_batista_8a.png',
         alt: 'Carlos Batista profile photo'
     },
-    title: 'Carlos Batista Blog',
-    description: 'Blog Personal sobre desarrollo de software y tecnología',
+    title: 'Carlos Batista 8a',
+    description: 'Experto en tiendas PrestaShop y Desarrollo web con PHP',
     image: {
         src: '',
-        alt: 'Este Blog usa Astro.js'
+        alt: 'Carlos Batista profile photo'
     },
     primaryNavLinks: [
-        {
-            text: 'Home',
-            href: '/'
-        },
-        {
-            text: 'Artículos',
-            href: '/blog'
-        },
         {
             text: 'About',
             href: '/about'
         },
         {
-            text: 'Contacto',
-            href: '/contact'
+            text: 'Blog',
+            href: '/blog'
         },
         {
-            text: 'Empresa',
-            href: 'https://cubadevops.com'
+            text: 'Contacto',
+            href: '/contact'
         }
     ],
     secondaryNavLinks: [
@@ -87,9 +79,9 @@ const siteConfig: SiteConfig = {
             href: '/contact'
         },
         {
-            text: 'Empresa',
-            href: 'https://cubadevops.com'
-        }
+            text: 'Deja tu Reseña',
+            href: 'https://n8n.cubadevops.com/form/send-review'
+        },
     ],
     socialLinks: [
         {
@@ -101,29 +93,23 @@ const siteConfig: SiteConfig = {
             text: 'Mira mi GitHub',
             href: 'https://github.com/cbatista8a',
             icon: 'github'
-        },
-        {
-            text: 'Sigueme en Instagram',
-            href: 'https://instagram.com/carlosbatista8a',
-            icon: 'instagram'
         }
     ],
     personalLinks: [
         {
-            href: 'https://cubadevops.com/',
-            text: 'Business'
-        },
-        {
-            href: 'https://carlosbatista.dev/',
-            text: 'Blog'
+            href: '/blog',
+            text: 'Blog',
+            icon: 'dev'
         },
         {
             href: 'https://linkedin.com/in/cbatista8a',
-            text: 'Linkedin'
+            text: 'Linkedin',
+            icon: 'linkedin'
         },
         {
             href: 'https://github.com/cbatista8a',
-            text: 'GitHub'
+            text: 'GitHub',
+            icon: 'github'
         }
     ],
     hero: {
@@ -139,10 +125,10 @@ const siteConfig: SiteConfig = {
         }
     },
     subscribe: {
-        title: 'Suscríbete a nuestra Newsletter',
+        title: 'Suscríbete a mi Newsletter',
         text: 'Un resumen semanal directamente en tu inbox',
-        formUrl: '#',
-        textBtn: 'Suscríbete'
+        formUrl: 'https://n8n.cubadevops.com/webhook/newsletter-optin',
+        textBtn: 'Suscribirme'
     },
     postsPerPage: 5
 };
