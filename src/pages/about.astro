@@ -12,49 +12,51 @@ const post_count = posts.filter(({ data }) => data.isFeatured && !data.draft).le
 
 
 <BaseLayout title="Sobre mí" description={siteConfig.description} image={siteConfig.image}>
-  <div class="grow w-full min-h-screen flex flex-col items-center justify-center bg-[#FFD43B] dark:bg-black px-4 py-16 sm:py-24">
+  <div class="grow w-full min-h-screen flex flex-col items-center justify-center bg-primary dark:bg-black px-4 py-16 sm:py-24">
     <div class="mx-auto w-full max-w-2xl lg:max-w-5xl">
-      <div class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
-        <div class="lg:pl-20 flex flex-col items-center lg:items-start">
-          <div class="max-w-xs px-2.5 lg:max-w-none">
-            <img src="/avatar.jpg" alt="Carlos Batista, consultor PrestaShop" loading="lazy" width="400" height="400" decoding="async" class="aspect-square rotate-3 rounded-2xl bg-[#FFF9E2] object-cover dark:bg-[#181A2A] border-4 border-[#FFD43B] dark:border-[#FFD43B] shadow-lg" />
+      <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
+        <div class="lg:pl-20 flex flex-col justify-center items-center">
+          <div class="max-w-xs px-2.5 lg:max-w-none flex justify-center items-center h-full">
+            <img src="/carlos_batista_biella_portrait.jpg" alt="Carlos Batista, consultor PrestaShop" loading="lazy" decoding="async" class="w-auto h-[80%] max-h-[550px] aspect-auto rotate-3 rounded-2xl bg-[#FFF9E2] object-cover dark:bg-[#181A2A] border-4 border-[#FFD43B] dark:border-[#FFD43B] shadow-lg mx-auto" />
           </div>
         </div>
-        <div class="lg:order-first lg:row-span-2 flex flex-col justify-center">
-          <h1 class="text-4xl font-bold tracking-tight text-[#181A2A] sm:text-5xl dark:text-[#FFD43B]">Soy Carlos Batista. Ayudo a tiendas PrestaShop a crecer, optimizar y escalar sin errores.</h1>
-          <div class="mt-6 space-y-7 text-base text-[#181A2A]/90 dark:text-[#FFD43B]/90">
+        <div class="lg:order-first lg:row-span-2 flex flex-col justify-center text-justify">
+          <h1 class="text-4xl text-start font-bold tracking-tight text-[#181A2A] sm:text-5xl dark:text-primary">
+            Soy Carlos Batista.<br>
+            Ayudo a tiendas PrestaShop a vender más.</h1>
+          <div class="mt-6 space-y-7 text-base text-dark/90 dark:text-light">
             <p>
-              Desde hace más de 10 años, mi misión es que cada tienda PrestaShop venda más y funcione mejor. Trabajo con equipos y empresas que buscan resultados reales, no promesas vacías.
+              Desde hace más de 5 años, mi misión es que cada tienda PrestaShop venda más y funcione mejor. Trabajo con equipos y empresas que buscan resultados reales.
             </p>
             <p>
               Mi enfoque es directo, honesto y siempre orientado a la mejora continua. Si buscas un partner técnico que te diga la verdad y te ayude a crecer, estás en el lugar correcto.
             </p>
             <p>
-              He ayudado a decenas de negocios a automatizar, optimizar y escalar sus operaciones digitales. Mi mayor satisfacción es ver a mis clientes dormir tranquilos sabiendo que su tienda está en buenas manos.
+              He ayudado a decenas de negocios a crecer, optimizando y escalando sus operaciones digitales. Mi mayor satisfacción es ver a mis clientes dormir tranquilos sabiendo que su tienda está vendiendo sin interrupciones.
             </p>
             <p>
-              ¿Listo para transformar tu tienda? <a href="https://cal.com/carlos-batista-8a" target="_blank" class="underline font-semibold hover:text-[#FFD43B] dark:hover:text-white">Agenda una llamada</a> y empecemos.
+              ¿Listo para optimizar tu tienda? <a href="/contact" target="_self" class="underline font-semibold hover:font-bold dark:hover:text-primary">Contáctame</a> y empecemos.
             </p>
           </div>
         </div>
         <div class="lg:pl-20">
           <ul role="list">
             {siteConfig.socialLinks?.map((link) => (
-              <li class="flex mt-0 first:mt-0">
+              <li class="flex mt-1 first:mt-0">
                 <a
-                  class="group flex text-sm font-medium text-[#181A2A] dark:text-[#FFD43B] items-center transition relative focus:outline-none"
+                  class="group flex text-sm font-medium text-[#181A2A] dark:text-primary items-center transition relative focus:outline-none"
                   href={link.href}
                   target="_blank"
                   rel="nofollow"
                 >
-                  <Icon icon={link.icon} class="text-[#FFD43B] dark:text-[#FFD43B]" /> <span class="relative after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-[#FFD43B] after:scale-x-0 after:transition-transform after:duration-200 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 after:origin-left">{link.text}</span>
+                  <Icon icon={link.icon} class="h-6 w-6 mr-3 flex-none fill-dark dark:fill-primary" /> <span class="relative after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:transition-transform after:duration-200 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 after:origin-left">{link.text}</span>
                 </a>
               </li>
             ))}
-            <li class="mt-8 border-t border-[#FFD43B]/30 pt-8 dark:border-[#FFD43B]/30 flex">
-              <a class="group flex text-sm font-medium text-[#181A2A] dark:text-[#FFD43B] items-center transition relative focus:outline-none" href="mailto:info@carlosbatista.dev">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none fill-[#FFD43B] dark:fill-[#FFD43B] transition mr-3"><path fill-rule="evenodd" d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"></path></svg>
-                <span class="relative after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-[#FFD43B] after:scale-x-0 after:transition-transform after:duration-200 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 after:origin-left">info@carlosbatista.dev</span>
+            <li class="mt-1 border-t border-dark/30 pt-2 dark:border-primary/30 flex">
+              <a class="group flex text-sm font-medium text-[#181A2A] dark:text-primary items-center transition relative focus:outline-none" href="mailto:info@carlosbatista.dev">
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="h-6 w-6 flex-none fill-dark dark:fill-primary transition mr-3"><path fill-rule="evenodd" d="M6 5a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H6Zm.245 2.187a.75.75 0 0 0-.99 1.126l6.25 5.5a.75.75 0 0 0 .99 0l6.25-5.5a.75.75 0 0 0-.99-1.126L12 12.251 6.245 7.187Z"></path></svg>
+                <span class="relative after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-primary after:scale-x-0 after:transition-transform after:duration-200 group-hover:after:scale-x-100 group-focus-visible:after:scale-x-100 after:origin-left">info@carlosbatista.dev</span>
               </a>
             </li>
           </ul>
