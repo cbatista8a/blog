@@ -7,44 +7,44 @@ const secondaryLinks = siteConfig.secondaryNavLinks || [];
 const socialLinks = siteConfig.socialLinks || [];
 ---
 
-<footer class="mx-auto mt-32">
+<footer class="mx-auto mt-32 bg-white dark:bg-black border-t border-[#FFD43B] dark:border-[#FFD43B]">
     <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8">
                 <a href="/"><img class="h-20 rounded-full dark:filter dark:invert" src="/logo_carlos_batista_8a.png" alt={siteConfig.title} /></a>
-                <p class="text-sm leading-6 text-slate-600 dark:text-slate-400">
+                <p class="text-sm leading-6 text-[#181A2A] dark:text-light">
                     Impulsando el desarrollo digital.
                 </p>
                 <div class="flex space-x-6">
                     {socialLinks.map((link) => (
-                        <SocialLink {...link} class="text-slate-400 hover:text-[#77631a] transition-colors" />
+                        <SocialLink {...link} class="text-dark hover:text-[#FFD43B] dark:text-[#FFD43B] dark:hover:text-light transition-colors" />
                     ))}
                 </div>
             </div>
             <div class="mt-16 flex flex-row justify-center items-start gap-8 xl:col-span-2 xl:mt-0 w-full">
                 <div class="flex flex-1 flex-col items-center min-w-[140px]">
-                    <h3 class="font-bold leading-6 text-black dark:text-slate-100">Blog</h3>
+                    <h3 class="font-bold leading-6 text-[#181A2A] dark:text-light">Blog</h3>
                     <ul role="list" class="mt-6 space-y-4">
                         <li>
-                            <a href="/blog" class="text-sm leading-6 text-slate-600 hover:text-[#77631a] dark:text-slate-400 dark:hover:text-[#77631a] transition-colors">
+                            <a href="/blog" class="text-sm leading-6 text-[#181A2A] hover:text-[#FFD43B] dark:text-[#FFD43B] dark:hover:text-white transition-colors">
                                 Artículos
                             </a>
                         </li>
                         <li>
-                            <a href="/about" class="text-sm leading-6 text-slate-600 hover:text-[#77631a] dark:text-slate-400 dark:hover:text-[#77631a] transition-colors">
+                            <a href="/about" class="text-sm leading-6 text-[#181A2A] hover:text-[#FFD43B] dark:text-[#FFD43B] dark:hover:text-white transition-colors">
                                 Sobre Mi
                             </a>
                         </li>
                     </ul>
                 </div>
                 <div class="flex flex-1 flex-col items-center min-w-[140px]">
-                    <h3 class="font-bold leading-6 text-black dark:text-slate-100">Recursos</h3>
+                    <h3 class="font-bold leading-6 text-[#181A2A] dark:text-light">Recursos</h3>
                     <ul role="list" class="mt-6 space-y-4">
                         {secondaryLinks.map((link) => (
                             <li>
                                 <Link
                                     {...link}
-                                    class="text-sm leading-6 text-slate-600 hover:text-[#77631a] dark:text-slate-400 dark:hover:text-[#77631a] transition-colors cursor-pointer"
+                                    class="text-sm leading-6 text-[#181A2A] hover:text-[#FFD43B] dark:text-[#FFD43B] dark:hover:text-white transition-colors cursor-pointer"
                                 />
                             </li>
                         ))}
@@ -52,8 +52,8 @@ const socialLinks = siteConfig.socialLinks || [];
                 </div>
             </div>
         </div>
-        <div class="mt-16 border-t border-slate-900/10 dark:border-slate-100/10 pt-8 sm:mt-20 lg:mt-24">
-            <p class="text-xs leading-5 text-slate-500 dark:text-slate-400">
+        <div class="mt-16 border-t border-[#FFD43B] dark:border-[#FFD43B] pt-8 sm:mt-20 lg:mt-24">
+            <p class="text-xs leading-5 text-[#8a7c2f] dark:text-light">
                 &copy; {new Date().getFullYear()}&nbsp;{siteConfig.title}. Todos los derechos reservados.
             </p>
         </div>
