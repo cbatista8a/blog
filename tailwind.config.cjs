@@ -1,6 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
+    darkMode: 'class',
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
     theme: {
         extend: {
@@ -9,7 +10,9 @@ module.exports = {
                 avatar: '0 0 1px 11px rgb(var(--color-primary) / 0.15), 0 0 1px 22px rgb(var(--color-primary) / 0.10)'
             },
             colors: {
-                primary: 'rgb(var(--color-primary) / <alpha-value>)'
+                primary: 'rgb(var(--color-primary) / <alpha-value>)',
+                dark: 'rgb(var(--dark) / <alpha-value>)',
+                light: 'rgb(var(--light) / <alpha-value>)',
             },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans]
