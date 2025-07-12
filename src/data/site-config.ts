@@ -125,10 +125,10 @@ const siteConfig: SiteConfig = {
         }
     },
     subscribe: {
-        title: 'Suscríbete a mi Newsletter',
-        text: 'Un resumen semanal directamente en tu inbox',
+        title: 'Deja tu email',
+        text: 'Y te aviso cuando publique un nuevo artículo en el blog.',
         formUrl: 'https://n8n.cubadevops.com/webhook/newsletter-optin',
-        textBtn: 'Suscribirme'
+        textBtn: 'Avísame'
     },
     postsPerPage: 5
 };

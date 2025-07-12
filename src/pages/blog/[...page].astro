@@ -7,6 +7,7 @@ import PostPreview from '../../components/PostPreview.astro';
 import siteConfig from '../../data/site-config.ts';
 import { sortPostsByDateDesc } from '../../utils/post-utils';
 import Subscribe from '../../components/Subscribe.astro';
+import FeaturedPostPreview from '../../components/FeaturedPostPreview.astro';
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
     const posts = (await getCollection('blog')).sort(sortPostsByDateDesc).filter(({ data }) => !data.draft);
@@ -17,7 +18,7 @@ const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> };
 const blog = page.data;
 ---
 
-<BaseLayout title="Blog Posts" description="Obtén las ultimas novedades de CubaDevOps" image={{ src: '/ovidius-preview.jpg', alt: 'The preview of the site' }}>
+<BaseLayout title="Blog Posts" description="Obtén las ultimas novedades de Carlos Batista" image={{ src: '/carlos_batista_biella_portrait.jpg', alt: 'Experto en PrestaShop' }}>
     <main class="grow px-4 py-12 sm:px-8 sm:py-16">
         <h1 class="sr-only">Blog</h1>
         <section class="max-w-3xl xl:max-w-6xl mx-auto mb-12">
@@ -25,7 +26,7 @@ const blog = page.data;
             {blog.length > 0 && page.currentPage === 1 && (
                 <div class="mb-12">
                     <h2 class="text-2xl font-bold text-[#181A2A] dark:text-[#FFD43B] mb-6">En evidencia</h2>
-                    <PostPreview post={blog[0]} featured={true} />
+                    <FeaturedPostPreview post={blog[0]} featured={true} />
                 </div>
             )}
         </section>
