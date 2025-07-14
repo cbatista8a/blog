@@ -7,141 +7,197 @@ const primaryNavLinks = siteConfig.primaryNavLinks || [];
 const { class: className } = Astro.props;
 ---
 
-<header id="main-header" class:list={["fixed top-0 left-0 w-full z-30 transition-all duration-300 bg-[#ffd53b] dark:bg-black/50 backdrop-blur", className]}>
-  <div id="header-inner" class="w-full flex items-center justify-between px-4 sm:px-8 transition-all duration-300" style="padding-top:1.5rem;padding-bottom:1.5rem;transition:padding 0.3s cubic-bezier(0.4,0,0.2,1);">
-    <div class="flex items-center gap-2">
-      {
-        siteConfig.logo && siteConfig.logo?.src ? (
-            <a href="/">
-                <img id="main-logo" class="w-10 sm:w-14 md:w-20 xl:w-full rounded-full transition-all duration-300 dark:filter dark:invert" src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} style="height:4.5rem;max-height:4.5rem;transition:height 0.3s cubic-bezier(0.4,0,0.2,1),max-height 0.3s cubic-bezier(0.4,0,0.2,1);" />
-            </a>
-        ) : (
-            <a class="text-xl font-bold sm:text-2xl" href="/">
-                {siteConfig.title}
-            </a>
-        )
-      }
-    </div>
-    {/* Desktop menu */}
-    {primaryNavLinks.length > 0 && (
-      <nav id="main-nav" class="hidden md:flex items-center gap-4 sm:gap-6 bg-transparent dark:bg-black backdrop-blur rounded-2xl shadow-lg px-6 border border-white/80 dark:border-[#FFD43B]/60 transition-all duration-300" style="padding-top:0.5rem;padding-bottom:0.5rem;transition:padding 0.3s cubic-bezier(0.4,0,0.2,1);">
-        {primaryNavLinks.map((link) => (
-          <HeaderNavLink
-            class={[
-              "relative font-semibold px-2 py-1 transition-colors duration-200 after:content-[''] after:block after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 after:origin-left",
-              link.text === 'Contacto'
-                ? 'text-white bg-black dark:bg-[#FFD43B] dark:text-[#181A2A] rounded-full px-4 py-1 shadow-md hover:bg-[#181A2A] hover:text-white dark:hover:bg-white dark:hover:text-[#181A2A]'
-                : 'text-black dark:text-[#FFD43B] hover:text-black dark:hover:text-[#FFD43B]'
-            ].join(' ')}
-            href={link.href}
-          >
-            {link.text}
-          </HeaderNavLink>
-        ))}
-      </nav>
-    )}
-    {/* Mobile menu: solo Contacto y hamburguesa */}
-    <div class="flex md:hidden items-center gap-2">
-      {primaryNavLinks.map((link) => (
-        link.text === 'Contacto' && (
-          <HeaderNavLink
-            class="text-white bg-[#7b2b90] rounded-full px-4 py-1 shadow-md font-semibold border border-[#7b2b90] hover:bg-[#181A2A] hover:text-white transition-colors duration-200"
-            href={link.href}
-          >
-            {link.text}
-          </HeaderNavLink>
-        )
-      ))}
-      <button
-        class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-white/80 border border-white/60 shadow-md"
-        aria-label="Abrir menú"
-        onclick="window.toggleMobileMenu && window.toggleMobileMenu()"
-        type="button"
-      >
-        <svg class="w-6 h-6 text-[#181A2A]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
-  {/* Menú desplegable mobile */}
-  <div id="mobile-menu" class="fixed top-0 left-0 w-full h-full bg-white/50 backdrop-blur rounded-b-2xl shadow-lg border-b border-white/60 z-40 transition-transform duration-300 -translate-y-full md:hidden flex flex-col">
-    <div class="flex flex-col items-center gap-6 py-12 px-6 flex-1">
-      {primaryNavLinks.filter(link => link.text !== 'Contacto').map((link) => (
-        <HeaderNavLink
-          class="text-[#181A2A] text-lg font-semibold px-4 py-2 rounded hover:bg-[#FFD43B] transition-colors duration-200 w-full text-center"
-          href={link.href}
-        >
-          {link.text}
-        </HeaderNavLink>
-      ))}
-    </div>
-    <div class="w-full flex items-end justify-between px-6 pb-6">
-      <div class="">
-        <ThemeToggle />
-      </div>
-      <button
-        class="w-12 h-12 flex items-center justify-center rounded-full bg-white/80 border border-white/60 shadow-lg z-50"
-        aria-label="Cerrar menú"
-        onclick="window.toggleMobileMenu && window.toggleMobileMenu()"
-        type="button"
-      >
-        <svg class="w-7 h-7 text-[#181A2A]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <script is:inline>
-    window.toggleMobileMenu = function() {
-      const menu = document.getElementById('mobile-menu');
-      if (menu) {
-        const isOpen = menu.classList.contains('translate-y-0');
-        menu.classList.toggle('translate-y-0', !isOpen);
-        menu.classList.toggle('-translate-y-full', isOpen);
-      }
-    }
-    // Sticky shrink/expand effect compatible with Astro navigation
-    function initHeaderShrinkEffect() {
-      const header = document.getElementById('main-header');
-      const inner = document.getElementById('header-inner');
-      const logo = document.getElementById('main-logo');
-      const nav = document.getElementById('main-nav');
-      if (!header || !inner || !logo || !nav) return;
-      // Remove previous scroll listener if any
-      if (window.__headerScrollHandler) {
-        window.removeEventListener('scroll', window.__headerScrollHandler);
-      }
-      let shrinked = false;
-      function setShrink(shrink) {
-        if (shrink) {
-          inner.style.paddingTop = inner.style.paddingBottom = '0.5rem';
-          logo.style.height = logo.style.maxHeight = '2.5rem';
-          nav.style.paddingTop = nav.style.paddingBottom = '0.25rem';
-          header.classList.add('shadow-md');
-        } else {
-          inner.style.paddingTop = inner.style.paddingBottom = '1.5rem';
-          logo.style.height = logo.style.maxHeight = '4.5rem';
-          nav.style.paddingTop = nav.style.paddingBottom = '0.5rem';
-          header.classList.remove('shadow-md');
+<header id="main-header" class:list={['fixed top-0 left-0 w-full z-[100] transition-all duration-300 bg-[#ffd53b] dark:bg-black/50 backdrop-blur', className]}>
+    <div
+        id="header-inner"
+        class="w-full flex items-center justify-between px-4 sm:px-8 transition-all duration-300"
+        style="padding-top:1.25rem;padding-bottom:1.25rem;transition:padding 0.3s cubic-bezier(0.4,0,0.2,1);"
+    >
+        <div class="flex items-center gap-2 min-w-0">
+            {
+                siteConfig.logo && siteConfig.logo?.src ? (
+                    <a href="/" class="block min-w-0">
+                        <img
+                            id="main-logo"
+                            class="rounded-full transition-all duration-300 dark:filter dark:invert w-[3.5rem] h-[3.5rem] sm:w-[4.5rem] sm:h-[4.5rem] object-cover"
+                            src={siteConfig.logo.src}
+                            alt={siteConfig.logo.alt || ''}
+                            style="transition:width 0.3s cubic-bezier(0.4,0,0.2,1),height 0.3s cubic-bezier(0.4,0,0.2,1);"
+                        />
+                    </a>
+                ) : (
+                    <a class="text-xl font-bold sm:text-2xl" href="/">
+                        {siteConfig.title}
+                    </a>
+                )
+            }
+        </div>
+        {/* Desktop menu */}
+        {
+            primaryNavLinks.length > 0 && (
+                <nav
+                    id="main-nav"
+                    class="hidden md:flex items-center gap-4 sm:gap-6 bg-transparent dark:bg-black backdrop-blur rounded-2xl shadow-lg px-6 border border-white/80 dark:border-[#FFD43B]/60 transition-all duration-300"
+                    style="padding-top:0.5rem;padding-bottom:0.5rem;transition:padding 0.3s cubic-bezier(0.4,0,0.2,1);"
+                >
+                    {primaryNavLinks.map((link) => (
+                        <HeaderNavLink
+                            class={[
+                                "relative font-semibold px-2 py-1 transition-colors duration-200 after:content-[''] after:block after:h-0.5 after:bg-black dark:after:bg-white after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-200 after:origin-left",
+                                link.text === 'Contacto'
+                                    ? 'text-white bg-black dark:bg-[#FFD43B] dark:text-[#181A2A] rounded-full px-4 py-1 shadow-md hover:bg-[#181A2A] hover:text-white dark:hover:bg-white dark:hover:text-[#181A2A]'
+                                    : 'text-black dark:text-[#FFD43B] hover:text-black dark:hover:text-[#FFD43B]'
+                            ].join(' ')}
+                            href={link.href}
+                        >
+                            {link.text}
+                        </HeaderNavLink>
+                    ))}
+                </nav>
+            )
         }
-      }
-      function onScroll() {
-        if (window.scrollY > 40 && !shrinked) {
-          shrinked = true;
-          setShrink(true);
-        } else if (window.scrollY <= 40 && shrinked) {
-          shrinked = false;
-          setShrink(false);
+        {/* Mobile menu: solo Contacto y hamburguesa */}
+        <div class="flex md:hidden items-center gap-2">
+            {
+                primaryNavLinks.map(
+                    (link) =>
+                        link.text === 'Contacto' && (
+                            <HeaderNavLink
+                                class="text-white bg-black rounded-full px-4 py-1 shadow-md font-semibold border dark:border-[#FFD43B] hover:bg-white hover:text-black transition-colors duration-200"
+                                href={link.href}
+                            >
+                                {link.text}
+                            </HeaderNavLink>
+                        )
+                )
+            }
+            <button
+                class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-white/90 border border-white/60 shadow-md focus:outline-none focus:ring-2 focus:ring-[#FFD43B]"
+                aria-label="Abrir menú"
+                onclick="window.toggleMobileMenu && window.toggleMobileMenu()"
+                type="button"
+            >
+                <svg class="w-7 h-7 text-[#181A2A]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+    {/* Menú desplegable mobile */}
+    <div
+        id="mobile-menu"
+        class="fixed top-0 left-0 w-full h-screen min-h-screen bg-white/80 dark:bg-black/80 backdrop-blur-lg rounded-b-2xl shadow-2xl border-b border-white/60 z-[200] transition-transform duration-300 -translate-y-full md:hidden flex flex-col overflow-y-auto"
+    >
+        {/* Controles arriba del menú */}
+        <div class="w-full flex items-center justify-between px-6 pt-6 pb-4 gap-2 sticky top-0 bg-white/80 dark:bg-black/80 backdrop-blur-lg z-[210]">
+            <ThemeToggle />
+            <button
+                class="w-10 h-10 flex items-center justify-center rounded-full bg-white/90 border border-white/60 shadow-lg z-50 focus:outline-none focus:ring-2 focus:ring-[#FFD43B]"
+                aria-label="Cerrar menú"
+                onclick="window.toggleMobileMenu && window.toggleMobileMenu()"
+                type="button"
+            >
+                <svg class="w-8 h-8 text-[#181A2A]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="flex flex-col items-center gap-8 py-12 px-6 flex-1">
+            {
+                primaryNavLinks
+                    .filter((link) => link.text !== 'Contacto')
+                    .map((link) => (
+                        <HeaderNavLink
+                            class="text-[#181A2A] dark:text-[#FFD43B] text-xl font-semibold px-4 py-3 rounded-lg hover:bg-[#FFD43B] dark:hover:bg-[#181A2A] transition-colors duration-200 w-full text-center shadow-sm"
+                            href={link.href}
+                        >
+                            {link.text}
+                        </HeaderNavLink>
+                    ))
+            }
+        </div>
+    </div>
+    <script is:inline>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (!menu) return;
+            const isOpen = menu.classList.contains('translate-y-0');
+            menu.classList.toggle('translate-y-0', !isOpen);
+            menu.classList.toggle('-translate-y-full', isOpen);
+            if (!isOpen) {
+                document.body.style.overflow = 'hidden';
+                document.body.style.height = '100vh';
+            } else {
+                document.body.style.overflow = '';
+                document.body.style.height = '';
+            }
         }
-      }
-      // Set initial state
-      setShrink(window.scrollY > 40);
-      window.addEventListener('scroll', onScroll);
-      window.__headerScrollHandler = onScroll;
-    }
-    // Astro navigation: use 'astro:page-load' for full compatibility (astro:after-swap is not always fired)
-    window.addEventListener('DOMContentLoaded', initHeaderShrinkEffect);
-    document.addEventListener('astro:page-load', initHeaderShrinkEffect);
-  </script>
+        window.toggleMobileMenu = toggleMobileMenu;
+
+        // Header shrink logic
+        function setHeaderShrink(shrink, inner, logo, nav, header) {
+            if (shrink) {
+                inner.style.paddingTop = inner.style.paddingBottom = '0.5rem';
+                logo.style.width = logo.style.height = '2.5rem';
+                nav.style.paddingTop = nav.style.paddingBottom = '0.25rem';
+                header.classList.add('shadow-md');
+            } else {
+                inner.style.paddingTop = inner.style.paddingBottom = '1.25rem';
+                logo.style.width = logo.style.height = '3.5rem';
+                nav.style.paddingTop = nav.style.paddingBottom = '0.5rem';
+                header.classList.remove('shadow-md');
+            }
+        }
+
+        function getHeaderElements() {
+            return {
+                header: document.getElementById('main-header'),
+                inner: document.getElementById('header-inner'),
+                logo: document.getElementById('main-logo'),
+                nav: document.getElementById('main-nav'),
+            };
+        }
+
+        function headerScrollHandlerFactory() {
+            let shrinked = window.scrollY > 40;
+            const { header, inner, logo, nav } = getHeaderElements();
+            if (!header || !inner || !logo || !nav) return null;
+            function onScroll() {
+                if (window.scrollY > 40 && !shrinked) {
+                    shrinked = true;
+                    setHeaderShrink(true, inner, logo, nav, header);
+                } else if (window.scrollY <= 40 && shrinked) {
+                    shrinked = false;
+                    setHeaderShrink(false, inner, logo, nav, header);
+                }
+            }
+            // Set initial state
+            setHeaderShrink(window.scrollY > 40, inner, logo, nav, header);
+            return onScroll;
+        }
+
+        function removePreviousHeaderScrollHandler() {
+            if (window.__headerScrollHandler) {
+                window.removeEventListener('scroll', window.__headerScrollHandler);
+                window.__headerScrollHandler = null;
+            }
+        }
+
+        function initHeaderShrinkEffect() {
+            // Esperar a que el DOM esté realmente listo tras navegación SPA
+            requestAnimationFrame(() => {
+                setTimeout(() => {
+                    removePreviousHeaderScrollHandler();
+                    const handler = headerScrollHandlerFactory();
+                    if (handler) {
+                        window.addEventListener('scroll', handler);
+                        window.__headerScrollHandler = handler;
+                    }
+                }, 0);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initHeaderShrinkEffect);
+        window.addEventListener('astro:page-load', initHeaderShrinkEffect);
+    </script>
 </header>

@@ -30,7 +30,7 @@ const { title, description, image, ...head } = Astro.props;
         </div>
         <script is:inline>
         // Lógica unificada para establecer y mantener el tema en cada carga o cambio de página
-        (function() {
+        /* (function() {
             function setThemeIcon(isDark) {
                 document.querySelectorAll('#icon-sun').forEach(el => el.classList.toggle('hidden', isDark));
                 document.querySelectorAll('#icon-moon').forEach(el => el.classList.toggle('hidden', !isDark));
@@ -81,7 +81,7 @@ const { title, description, image, ...head } = Astro.props;
                     syncTheme();
                 }
             });
-        })();
+        })(); */
         </script>
     </body>
 </html>
