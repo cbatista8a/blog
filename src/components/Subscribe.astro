@@ -99,7 +99,7 @@ const { class: className } = Astro.props;
                     console.error(error.status, error.statusText);
                 });
     // Toast nativo con Tailwind
-    function showToast(message, type = 'success') {
+    function showToast(message: string, type: string = 'success') {
         let toast = document.createElement('div');
         toast.textContent = message;
         toast.className = `fixed bottom-6 left-1/2 z-[9999] px-6 py-3 rounded-full shadow-lg text-base font-semibold pointer-events-none transition-all duration-500 transform -translate-x-1/2 ` +

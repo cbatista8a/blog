@@ -58,8 +58,9 @@ const socialLinks = siteConfig.socialLinks || [];
             </div>
         </div>
         <div class="mt-16 border-t border-[#FFD43B] dark:border-[#FFD43B] pt-8 sm:mt-20 lg:mt-24">
-            <p class="text-xs leading-5 text-[#8a7c2f] dark:text-light">
-                &copy; {new Date().getFullYear()}&nbsp;{siteConfig.title}. Todos los derechos reservados.
+            <p class="text-xs leading-5 text-dark dark:text-[#FFD43B] bg-[#FFF9E2] dark:bg-[#181A2A] px-4 py-2 rounded-md text-center" aria-label={`Copyright ${new Date().getFullYear()} ${siteConfig.title}. Todos los derechos reservados.`}>
+                <span class="sr-only">Copyright</span>
+                &copy; {new Date().getFullYear()}&nbsp;<span class="font-bold">{siteConfig.title}</span>. Todos los derechos reservados.
             </p>
         </div>
     </div>
