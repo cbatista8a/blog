@@ -58,8 +58,19 @@ if (seo?.image?.src) {
             {
                 featureImage?.src && (
                     <figure class="mx-auto my-6 sm:my-8 lg:my-12 flex flex-col items-center justify-center">
-                        <img class="w-full rounded-xl border border-[#FFD43B] dark:border-[#FFD43B] shadow-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
-                        {featureImage.caption && <figcaption class="mt-1.5 text-xs sm:text-sm text-[#181A2A] dark:text-[#FFD43B]">{featureImage.caption}</figcaption>}
+                        <picture class="w-full h-auto">
+                            <source srcset={featureImage.src.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                            <img
+                                class="w-full rounded-xl border border-[#FFD43B] dark:border-[#FFD43B] shadow-md"
+                                src={featureImage.src}
+                                loading="lazy"
+                                decoding="async"
+                                alt={featureImage.alt || ''}
+                                width="1200"
+                                height="630"
+                            />
+                        </picture>
+                        {featureImage.caption && <figcaption class="mt-1.5 text-[xx-small] text-pretty sm:text-sm text-[#181A2A] dark:text-[#FFD43B]">{featureImage.caption}</figcaption>}
                     </figure>
                 )
             }

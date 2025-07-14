@@ -26,7 +26,18 @@ const { title, publishDate, updatedDate, featureImage, excerpt } = post.data;
         featureImage?.src && (
             <figure class="max-w-6xl mx-auto my-6 sm:my-8 px-6">
                 <a href={`/blog/${post.slug}/`}>
-                    <img class="w-full rounded-xl border-0 border-[#FFD43B] dark:border-[#FFD43B] shadow-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                <picture class="w-full h-auto">
+                    <source srcset={featureImage.src.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                    <img
+                        class="w-full rounded-xl border-0 border-[#FFD43B] dark:border-[#FFD43B] shadow-md"
+                        src={featureImage.src}
+                        loading="eager"
+                        decoding="async"
+                        alt={featureImage.alt || ''}
+                        width="1200"
+                        height="600"
+                    />
+                </picture>
                 </a>
             </figure>
         )

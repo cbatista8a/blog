@@ -30,7 +30,18 @@ const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = p
         featureImage?.src && (
             <figure class="post-card-thumbnail flex items-center justify-center mt-6 mb-6 xl:mb-0">
                 <a href={`/blog/${post.slug}/`} class="flex items-center justify-center w-full no-underline">
-                    <img class="w-full rounded-xl border border-[#FFD43B] dark:border-[#FFD43B] shadow-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                    <picture class="w-full h-auto">
+                        <source srcset={featureImage.src.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                        <img
+                            class="w-full rounded-xl border border-[#FFD43B] dark:border-[#FFD43B] shadow-md"
+                            src={featureImage.src}
+                            loading="lazy"
+                            decoding="async"
+                            alt={featureImage.alt || ''}
+                            width="280"
+                            height="125"
+                        />
+                    </picture>
                 </a>
             </figure>
         )
