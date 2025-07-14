@@ -29,7 +29,7 @@ export type Subscribe = {
 };
 
 export type SiteConfig = {
-    logo?: Image;
+    logo: Image;
     title: string;
     description: string;
     image?: Image;

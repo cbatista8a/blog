@@ -11,9 +11,14 @@ const socialLinks = siteConfig.socialLinks || [];
     <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
         <div class="xl:grid xl:grid-cols-3 xl:gap-8">
             <div class="space-y-8">
-                <a href="/"><img class="h-20 rounded-full dark:filter dark:invert" src="/logo_carlos_batista_8a.png" alt={siteConfig.title} /></a>
+                <a href="/">
+                    <picture class="h-auto w-full">
+                        <source srcset={siteConfig.logo.src.replace('.png', '.webp')} type="image/webp" />
+                        <img class="h-20 rounded-full dark:filter dark:invert" src={siteConfig?.logo.src} alt={siteConfig.title} width="80" height="80" />
+                    </picture>
+                </a>
                 <p class="text-sm leading-6 text-[#181A2A] dark:text-light">
-                    Impulsando el desarrollo digital.
+                    Haciendo código con 100 T.
                 </p>
                 <div class="flex space-x-6">
                     {socialLinks.map((link) => (

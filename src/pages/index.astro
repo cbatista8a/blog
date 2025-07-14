@@ -16,11 +16,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#181A2A] dark:text-[#FFD43B] mb-4">
                     OPTIMIZO TIENDAS<br />
                     <div class="flex justify-center md:justify-start items-center gap-2">
-                        <img
-                            src="/prestashop_logo_transparent.png"
-                            alt="Logo de PrestaShop"
-                            class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 rounded-full object-cover z-10 md:-ml-3 relative dark:filter dark:invert"
-                        /><span class="-ml-4 sm:-ml-5">RESTASHOP</span>
+                        <picture>
+                            <source srcset="/prestashop_logo_transparent.webp" type="image/webp" />
+                            <img
+                                src="/prestashop_logo_transparent.png"
+                                alt="Logo de PrestaShop"
+                                class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 rounded-full object-cover z-10 md:-ml-3 relative dark:filter dark:invert"
+                                width="80"
+                                height="80"
+                            />
+                        </picture><span class="-ml-4 sm:-ml-5">RESTASHOP</span>
                     </div>
                 </h1>
                 <h2 class="text-lg xs:text-xl sm:text-2xl font-semibold text-[#181A2A] dark:text-white mt-2 mb-4">Y luego las ayudo a Escalar</h2>
@@ -38,11 +43,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             {/* Columna 3: imagen y especialidad */}
             <div class="flex-1 flex flex-col items-center justify-center relative order-first md:order-last">
                 <div class="relative flex flex-col items-center w-full h-[60vh] max-h-[25vh] md:max-h-[34vh] lg:max-h-[50vh]">
-                    <img
-                        src="/carlos_batista_milan_portrait.jpg"
-                        alt="Foto de Carlos Batista"
-                        class="w-auto h-full object-cover border-4 border-white dark:border-[#FFD43B] z-10 relative rounded-3xl"
-                    />
+                    <picture class="w-auto h-full">
+                        <source srcset="/carlos_batista_milan_portrait.webp" type="image/webp" />
+                        <img
+                            src="/carlos_batista_milan_portrait.jpg"
+                            alt="Foto de Carlos Batista"
+                            class="w-auto h-full object-cover border-4 border-white dark:border-[#FFD43B] z-10 relative rounded-3xl"
+                            width="640"
+                            height="853"
+                        />
+                    </picture>
                     <span class="hidden lg:block mt-4 text-[#181A2A] dark:text-[#FFD43B] font-bold text-base xs:text-lg md:text-xl text-center">Especialista en tiendas en crecimiento</span>
                     <div class="hidden lg:flex items-center mt-2 gap-2 w-full justify-center">
                         <span class="inline-block text-[#181A2A] dark:text-[#FFD43B] underline text-xs xs:text-sm font-semibold px-3 py-1">Auditoría</span>
@@ -147,14 +157,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="image flex justify-center lg:w-1/2 lg:justify-start lg:pr-12">
                     <div class="w-135 flex-none lg:w-180" style="opacity: 1; transform: none;">
                         <div class="justify-center lg:justify-start relative flex w-full">
-                            <img
-                                width="100%"
-                                height="auto"
-                                src="/audit-hero.png"
-                                alt="Velocidad y Estabilidad en tu Web"
-                                class="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px] bg-neutral-100 object-cover rounded-3xl"
-                                loading="lazy"
-                            />
+                            <picture class="w-auto h-full">
+                                <source srcset="/audit-hero.webp" type="image/webp" />
+                                <img
+                                    src="/audit-hero.png"
+                                    alt="Velocidad y Estabilidad en tu Web"
+                                    class="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px] bg-neutral-100 object-cover rounded-3xl"
+                                    width="500"
+                                    height="333"
+                                />
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -216,14 +228,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 <div class="image flex justify-center lg:w-1/2 lg:justify-end lg:pl-12">
                     <div class="w-135 flex-none lg:w-180" style="opacity: 1; transform: none;">
                         <div class="justify-center lg:justify-end relative flex w-full">
-                            <img
-                                width="100%"
-                                height="auto"
-                                src="/carlos_batista_office_portrait.jpg"
-                                alt="Carlos Batista en su oficina"
-                                class="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px] bg-neutral-100 object-cover rounded-3xl"
-                                loading="lazy"
-                            />
+                            <picture class="w-auto h-full">
+                                <source srcset="/carlos_batista_office_portrait.webp" type="image/webp" />
+                                <img
+                                    src="/carlos_batista_office_portrait.jpg"
+                                    alt="Carlos Batista en su oficina"
+                                    class="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px] bg-neutral-100 object-cover rounded-3xl"
+                                    width="500"
+                                    height="333"
+                                />
+                            </picture>
                         </div>
                     </div>
                 </div>
@@ -354,7 +368,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                       <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector moda</div>
                     </div>
                     <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
-                      <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                      <picture class="h-14 w-14">
+                        <source srcset="/avatar.webp" type="image/webp" />
+                        <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                      </picture>
                     </div>
                   </figcaption>
                 </figure>

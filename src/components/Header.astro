@@ -17,13 +17,18 @@ const { class: className } = Astro.props;
             {
                 siteConfig.logo && siteConfig.logo?.src ? (
                     <a href="/" class="block min-w-0">
-                        <img
-                            id="main-logo"
-                            class="rounded-full transition-all duration-300 dark:filter dark:invert w-[3.5rem] h-[3.5rem] sm:w-[4.5rem] sm:h-[4.5rem] object-cover"
-                            src={siteConfig.logo.src}
-                            alt={siteConfig.logo.alt || ''}
-                            style="transition:width 0.3s cubic-bezier(0.4,0,0.2,1),height 0.3s cubic-bezier(0.4,0,0.2,1);"
-                        />
+                        <picture class="">
+                            <source srcset={siteConfig.logo.src.replace('.png', '.webp')} type="image/webp" />
+                            <img
+                                id="main-logo"
+                                class="rounded-full transition-all duration-300 dark:filter dark:invert w-[3.5rem] h-[3.5rem] sm:w-[4.5rem] sm:h-[4.5rem] object-cover"
+                                src={siteConfig.logo.src}
+                                alt={siteConfig.logo.alt || ''}
+                                width="140"
+                                height="140"
+                                style="transition:width 0.3s cubic-bezier(0.4,0,0.2,1),height 0.3s cubic-bezier(0.4,0,0.2,1);"
+                            />
+                        </picture>
                     </a>
                 ) : (
                     <a class="text-xl font-bold sm:text-2xl" href="/">
