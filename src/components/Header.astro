@@ -185,19 +185,22 @@ const { class: className } = Astro.props;
 
         function initHeaderShrinkEffect() {
             // Esperar a que el DOM esté realmente listo tras navegación SPA
-            requestAnimationFrame(() => {
-                setTimeout(() => {
-                    removePreviousHeaderScrollHandler();
-                    const handler = headerScrollHandlerFactory();
-                    if (handler) {
-                        window.addEventListener('scroll', handler);
-                        window.__headerScrollHandler = handler;
-                    }
-                }, 0);
-            });
+            let tries = 0;
+            function tryInit() {
+                removePreviousHeaderScrollHandler();
+                const handler = headerScrollHandlerFactory();
+                if (handler) {
+                    window.addEventListener('scroll', handler);
+                    window.__headerScrollHandler = handler;
+                } else if (tries < 20) {
+                    tries++;
+                    setTimeout(tryInit, 50);
+                }
+            }
+            tryInit();
         }
 
-        window.addEventListener('DOMContentLoaded', initHeaderShrinkEffect);
-        window.addEventListener('astro:page-load', initHeaderShrinkEffect);
+        document.addEventListener('DOMContentLoaded', initHeaderShrinkEffect);
+        document.addEventListener('astro:page-load', initHeaderShrinkEffect);
     </script>
 </header>
