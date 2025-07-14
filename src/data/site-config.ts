@@ -6,6 +6,8 @@ export type Image = {
 export type Link = {
     href: string;
     text: string;
+    target?: '_self' | '_blank';
+    rel?: 'follow' | 'nofollow' | 'noopener' | 'noreferrer';
 };
 
 export type SocialLink = Link & {
@@ -66,10 +68,6 @@ const siteConfig: SiteConfig = {
         }
     ],
     secondaryNavLinks: [
-        // {
-        //     text: 'About',
-        //     href: '/about'
-        // },
         {
             text: 'Terminos de Uso',
             href: '/terms'
@@ -80,19 +78,22 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Deja tu Reseña',
-            href: 'https://n8n.cubadevops.com/form/send-review'
-        },
+            href: 'https://n8n.cubadevops.com/form/send-review',
+            target: '_blank',
+        }
     ],
     socialLinks: [
         {
             text: 'Conecta en Linkedin',
-            href: 'https://linkedin.com/in/cbatista8a',
-            icon: 'linkedin'
+            href: 'https://www.linkedin.com/mynetwork/discovery-see-all/?usecase=PEOPLE_FOLLOWS&followMember=carlosbatista8a',
+            icon: 'linkedin',
+            target: '_blank'
         },
         {
             text: 'Mira mi GitHub',
             href: 'https://github.com/cbatista8a',
-            icon: 'github'
+            icon: 'github',
+            target: '_blank'
         }
     ],
     personalLinks: [
@@ -102,28 +103,18 @@ const siteConfig: SiteConfig = {
             icon: 'dev'
         },
         {
-            href: 'https://linkedin.com/in/cbatista8a',
+            href: 'https://linkedin.com/in/carlosbatista8a',
             text: 'Linkedin',
-            icon: 'linkedin'
+            icon: 'linkedin',
+            target: '_blank',
         },
         {
             href: 'https://github.com/cbatista8a',
             text: 'GitHub',
-            icon: 'github'
+            icon: 'github',
+            target: '_blank',
         }
     ],
-    hero: {
-        title: 'Blog de Carlos Batista',
-        text: `Aquí hablamos sobre desarrollo de software y tecnologia en general.
-        Y si buscas un experto en Prestashop o Desarrollo Web con PHP, estoy aquí para colaborar en proyectos desafiantes y llevar tu negocio al siguiente nivel.`,
-        avatar: {
-            src: '/avatar.jpg',
-            alt: 'Carlos Batista'
-        },
-        backgroundImage: {
-            src: '/hero.webp'
-        }
-    },
     subscribe: {
         title: 'Deja tu email',
         text: 'Y te aviso cuando publique un nuevo artículo en el blog.',
