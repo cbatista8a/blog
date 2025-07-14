@@ -14,10 +14,10 @@ const post_count = posts.filter(({ data }) => data.isFeatured && !data.draft).le
     <div class="mx-auto w-full max-w-2xl lg:max-w-5xl">
       <div class="grid grid-cols-1 gap-y-8 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
         <div class="lg:pl-20 flex flex-col justify-center items-center">
-          <div class="max-w-xs px-2.5 lg:max-w-none flex justify-center items-center h-full">
-            <picture class="w-auto h-full">
+          <div class="max-w-xs px-2.5 lg:max-w-none flex justify-center items-center min-h-[300px] sm:min-h-[400px]">
+            <picture class="w-full">
               <source srcset="/carlos_batista_biella_portrait.webp" type="image/webp" />
-              <img src="/carlos_batista_biella_portrait.jpg" alt="Carlos Batista, consultor PrestaShop" loading="lazy" decoding="async" class="w-auto h-[80%] max-h-[550px] aspect-auto rotate-3 rounded-2xl bg-[#FFF9E2] object-cover dark:bg-[#181A2A] border-4 border-[#FFD43B] dark:border-[#FFD43B] shadow-lg mx-auto" width="400" height="550" />
+              <img src="/carlos_batista_biella_portrait.jpg" alt="Carlos Batista, consultor PrestaShop" decoding="async" class="w-full h-auto max-h-[550px] aspect-auto rotate-3 rounded-2xl bg-[#FFF9E2] object-cover dark:bg-[#181A2A] border-4 border-[#FFD43B] dark:border-[#FFD43B] shadow-lg mx-auto" width="400" height="550" />
             </picture>
           </div>
         </div>
