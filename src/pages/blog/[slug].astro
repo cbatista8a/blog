@@ -37,10 +37,10 @@ if (seo?.image?.src) {
     <main class="grow px-4 py-12 sm:px-8 sm:py-16 bg-white dark:bg-black">
         <article class="max-w-6xl mx-auto mb-12 sm:mb-16 bg-white dark:bg-black rounded-2xl shadow-lg border border-[#FFD43B] dark:border-[#FFD43B] px-6 py-8">
             <header class="max-w-3xl mx-auto mb-6 sm:mb-8">
-                <div class="mb-3 text-sm uppercase tracking-wider text-[#8a7c2f] dark:text-[#FFD43B] flex items-center gap-2">
+                <div class="mb-3 text-sm uppercase tracking-wider text-dark dark:text-[#FFD43B] flex items-center gap-2">
                     {
                         isFeatured && (
-                            <span class="font-bold text-[#FFD43B] dark:text-[#FFD43B]">Featured</span>
+                            <span class="font-bold text-[#181A2A] dark:text-[#FFD43B]">Featured</span>
                         )
                     }
                     {isFeatured && <span class="text-[#181A2A] dark:text-[#FFD43B]">/</span>}
@@ -81,21 +81,21 @@ if (seo?.image?.src) {
                 <div class="mt-8 flex flex-wrap gap-x-3 text-sm sm:mt-12 sm:text-base">
                     <span class="font-semibold text-[#181A2A] dark:text-[#FFD43B]">Share:</span>
                     <a
-                        class="text-[#FFD43B] dark:text-[#FFD43B] transition duration-300 hover:text-[#181A2A] dark:hover:text-white font-semibold"
+                        class="text-dark dark:text-[#FFD43B] underline transition duration-300 hover:text-[#181A2A] dark:hover:text-white font-semibold"
                         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferer"
                         aria-label="Share on X">X/Twitter</a
                     >
                     <a
-                        class="text-[#FFD43B] dark:text-[#FFD43B] transition duration-300 hover:text-[#181A2A] dark:hover:text-white font-semibold"
+                        class="text-dark dark:text-[#FFD43B] underline transition duration-300 hover:text-[#181A2A] dark:hover:text-white font-semibold"
                         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(href)}`}
                         target="_blank"
                         rel="noopener noreferer"
                         aria-label="Share on Facebook">Facebook</a
                     >
                     <a
-                        class="text-[#FFD43B] dark:text-[#FFD43B] transition duration-300 hover:text-[#181A2A] dark:hover:text-white font-semibold"
+                        class="text-dark dark:text-[#FFD43B] underline transition duration-300 hover:text-[#181A2A] dark:hover:text-white font-semibold"
                         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(href)}&summary=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferer"

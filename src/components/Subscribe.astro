@@ -51,8 +51,10 @@ const { class: className } = Astro.props;
                         </button>
                     </div>
                     <div class="w-full">
-                        <input type="checkbox" name="gdpr" aria-labelledby="gdpr-label" class="border-0" value="1" required="">
-                        <span class="mx-1 text-slate-700 dark:text-slate-300">Aceptas recibir comunicaciones (puedes darte de baja en cualquier momento)</span>
+                        <label id="gdpr-label" class="flex items-center justify-center">
+                            <input type="checkbox" name="gdpr" aria-labelledby="gdpr-label" class="border-0" value="1" required="">
+                            <span class="mx-1 text-slate-700 dark:text-slate-300">Acepto recibir comunicaciones de interes legitimo (puedes darte de baja en cualquier momento)</span>
+                        </label>
                     </div>
                     <div id="captcha"></div>
                     </form>

@@ -8,7 +8,7 @@ const { title, publishDate, updatedDate, featureImage } = post.data;
 
 <article class="mb-12 flex flex-col gap-x-8 gap-y-6 sm:flex-row bg-white dark:bg-black rounded-xl border border-[#FFD43B] dark:border-[#FFD43B] shadow-md px-6 py-6">
     <header class="grow">
-        <div class="mb-2 text-sm uppercase tracking-wider text-[#8a7c2f] dark:text-[#FFD43B]">
+        <div class="mb-2 text-sm uppercase tracking-wider text-dark dark:text-[#FFD43B]">
             <FormattedDate date={publishDate} />
             {
                 updatedDate && (
