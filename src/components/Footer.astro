@@ -1,38 +1,67 @@
 ---
 import siteConfig from '../data/site-config';
+import Link from './Link.astro';
 import SocialLink from './SocialLink.astro';
 
+const secondaryLinks = siteConfig.secondaryNavLinks || [];
 const socialLinks = siteConfig.socialLinks || [];
-const secondaryNavLinks = siteConfig.secondaryNavLinks || [];
 ---
 
-<footer class="px-4 py-8 sm:px-8 sm:py-12">
-    {
-        secondaryNavLinks.length > 0 && (
-            <div class="w-full max-w-3xl mx-auto mb-6 flex flex-wrap gap-x-6 gap-y-1 justify-center">
-                {secondaryNavLinks.map((link) => (
-                    <a class="text-slate-700 transition hover:text-slate-500" href={link.href}>
-                        {link.text}
-                    </a>
-                ))}
+<footer class="mx-auto mt-32 bg-white dark:bg-black border-t border-[#FFD43B] dark:border-[#FFD43B]">
+    <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8">
+        <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+            <div class="space-y-8">
+                <a href="/">
+                    <picture class="h-auto w-full">
+                        <source srcset={siteConfig.logo.src.replace('.png', '.webp')} type="image/webp" />
+                        <img class="h-20 rounded-full dark:filter dark:invert" src={siteConfig?.logo.src} alt={siteConfig.title} width="80" height="80" />
+                    </picture>
+                </a>
+                <p class="text-sm leading-6 text-[#181A2A] dark:text-light">
+                    Haciendo código con 100 T.
+                </p>
+                <div class="flex space-x-6">
+                    {socialLinks.map((link) => (
+                        <SocialLink {...link} class="text-dark hover:text-[#FFD43B] dark:text-[#FFD43B] dark:hover:text-light transition-colors" />
+                    ))}
+                </div>
             </div>
-        )
-    }
-    {
-        socialLinks.length > 0 && (
-            <div class="w-full max-w-3xl mx-auto mb-6 flex flex-wrap gap-x-4 gap-y-3 justify-center">
-                {socialLinks.map((link) => (
-                    <SocialLink {...link} class="bg-slate-50 text-slate-700 hover:bg-primary hover:text-white hover:shadow-button" />
-                ))}
+            <div class="mt-16 flex flex-row justify-center items-start gap-8 xl:col-span-2 xl:mt-0 w-full">
+                <div class="flex flex-1 flex-col items-center min-w-[140px]">
+                    <h2 class="font-bold leading-6 text-[#181A2A] dark:text-light">Blog</h2>
+                    <ul role="list" class="mt-6 space-y-4">
+                        <li>
+                            <a href="/blog" class="text-sm leading-6 text-[#181A2A] hover:underline dark:text-[#FFD43B] dark:hover:text-white transition-colors">
+                                Artículos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/about" class="text-sm leading-6 text-[#181A2A] hover:underline dark:text-[#FFD43B] dark:hover:text-white transition-colors">
+                                Sobre Mi
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="flex flex-1 flex-col items-center min-w-[140px]">
+                    <h3 class="font-bold leading-6 text-[#181A2A] dark:text-light">Recursos</h3>
+                    <ul role="list" class="mt-6 space-y-4">
+                        {secondaryLinks.map((link) => (
+                            <li>
+                                <Link
+                                    {...link}
+                                    class="text-sm leading-6 text-[#181A2A] hover:underline dark:text-[#FFD43B] dark:hover:text-white transition-colors cursor-pointer"
+                                />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-        )
-    }
-    <div class="flex flex-wrap gap-1 justify-evenly items-center">
-        <div id="wcb" class="carbonbadge flex items-center"></div>
-        <script is:inline src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
-        <p class=" text-xs uppercase tracking-wider text-slate-700">
-            &copy; {new Date().getFullYear()}&nbsp;<a class="text-primary underline hover:no-underline" href="/">{siteConfig.title}</a>. All rights reserved.
-        </p>
+        </div>
+        <div class="mt-16 border-t border-[#FFD43B] dark:border-[#FFD43B] pt-8 sm:mt-20 lg:mt-24">
+            <p class="text-xs leading-5 text-dark dark:text-[#FFD43B] bg-[#FFF9E2] dark:bg-[#181A2A] px-4 py-2 rounded-md text-center" aria-label={`Copyright ${new Date().getFullYear()} ${siteConfig.title}. Todos los derechos reservados.`}>
+                <span class="sr-only">Copyright</span>
+                &copy; {new Date().getFullYear()}&nbsp;<span class="font-bold">{siteConfig.title}</span>. Todos los derechos reservados.
+            </p>
+        </div>
     </div>
-    
 </footer>

@@ -34,25 +34,38 @@ function formatCanonicalURL(url: string | URL) {
 }
 ---
 
-<!-- High Priority Global Metadata -->
+<!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>{title}</title>
 <meta name="generator" content={Astro.generator} />
 
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..700;1,400..700&display=swap" />
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png">
 
-<!-- Low Priority Global Metadata -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
+<!-- Font preloads -->
+<link rel="preload" href="/fonts/CabinetGrotesk/fonts/CabinetGrotesk-Variable.woff2" as="font" type="font/woff2" crossorigin />
 
-<!-- Page Metadata -->
+<!-- Canonical URL -->
 <link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
@@ -63,10 +76,41 @@ function formatCanonicalURL(url: string | URL) {
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta property="og:image:alt" content={resolvedImage.alt} />}
 
-<!-- X/Twitter -->
+<!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={formatCanonicalURL(canonicalURL)} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 {resolvedImage?.src && <meta property="twitter:image" content={resolvedImage.src} />}
 {resolvedImage?.alt && <meta name="twitter:image:alt" content={resolvedImage?.alt} />}
+
+<!-- Theme color -->
+<meta name="theme-color" content="#FFD43B" />
+<meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)" />
+
+<!-- Dark mode script -->
+<script is:inline>
+    const setTheme = () => {
+        const theme = (() => {
+            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+                return localStorage.getItem('theme');
+            }
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        })();
+
+        if (theme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+
+        window.localStorage.setItem('theme', theme || 'light');
+    };
+
+    setTheme();
+
+    document.addEventListener('astro:after-swap', setTheme);
+</script>

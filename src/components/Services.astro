@@ -1,0 +1,50 @@
+---
+const services = [
+  {
+    title: 'Desarrollo Web',
+    description: 'Creamos páginas y aplicaciones web modernas, rápidas y seguras.',
+    icon: 'CodePen',
+  },
+  {
+    title: 'Consultoría Técnica',
+    description: 'Te ayudamos a tomar mejores decisiones tecnológicas para tu negocio.',
+    icon: 'Dev',
+  },
+  {
+    title: 'Arquitectura de Software',
+    description: 'Diseño de sistemas robustos, escalables y mantenibles.',
+    icon: 'GitHub',
+  },
+  {
+    title: 'Mentoría',
+    description: 'Acompañamiento y formación para equipos de desarrollo.',
+    icon: 'LinkedIn',
+  },
+];
+---
+
+<section class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+      Servicios
+    </h2>
+    <p class="mt-4 text-lg text-slate-600">
+      Te ayudo a crear productos digitales de alto impacto.
+    </p>
+  </div>
+  <div class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+    {services.map((service) => (
+      <div class="flex gap-6 rounded-2xl bg-white/80 dark:bg-gray-900/80 p-8 shadow-lg ring-1 ring-slate-900/5">
+        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
+          <svg class="h-7 w-7"><use href={`#icon-${service.icon.toLowerCase()}`} /></svg>
+        </div>
+        <div>
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">{service.title}</h3>
+          <p class="mt-2 text-base text-slate-600 dark:text-slate-400">{service.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- Puedes reemplazar los iconos SVG por componentes Astro si lo prefieres -->

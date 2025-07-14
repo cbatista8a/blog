@@ -1,0 +1,77 @@
+---
+import Icon from './Icon.astro';
+---
+
+<button
+    id="theme-toggle"
+    type="button"
+    class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-sm text-slate-500 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-50 transition-colors duration-200"
+    aria-label="Toggle dark mode"
+>
+    <span id="icon-sun" class="h-6 w-6">
+        <Icon icon="sun" />
+    </span>
+    <span id="icon-moon" class="h-6 w-6 hidden">
+        <Icon icon="moon" />
+    </span>
+</button>
+<script is:inline>
+    // Unificada: lógica de cambio de tema reutilizable para cualquier ThemeToggle
+    // Muestra el icono contrario al tema actual
+    function setThemeIcon(isDark) {
+        document.querySelectorAll('#icon-sun').forEach((el) => el.classList.toggle('hidden', isDark ? false : true));
+        document.querySelectorAll('#icon-moon').forEach((el) => el.classList.toggle('hidden', isDark ? true : false));
+    }
+    function getCurrentTheme() {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme');
+        }
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
+        }
+        return 'light';
+    }
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+            setThemeIcon(true);
+        } else {
+            document.documentElement.classList.remove('dark');
+            setThemeIcon(false);
+        }
+        if (typeof localStorage !== 'undefined') {
+            localStorage.setItem('theme', theme);
+        }
+    }
+    function syncTheme() {
+        const theme = getCurrentTheme();
+        applyTheme(theme);
+    }
+    // Inicializa el estado del icono al cargar
+    syncTheme();
+    // Permite cambiar el tema manualmente desde cualquier ThemeToggle
+    document.querySelectorAll('#theme-toggle').forEach((btn) => {
+        btn.onclick = function () {
+            const isDark = !document.documentElement.classList.contains('dark');
+            applyTheme(isDark ? 'dark' : 'light');
+        };
+    });
+    // Reatacha el evento tras cada navegación SPA de Astro
+    window.addEventListener('astro:page-load', () => {
+        syncTheme();
+        document.querySelectorAll('#theme-toggle').forEach((btn) => {
+            btn.onclick = function () {
+                const isDark = !document.documentElement.classList.contains('dark');
+                applyTheme(isDark ? 'dark' : 'light');
+            };
+        });
+    });
+    // Sincroniza el tema si cambia en otra pestaña
+    window.addEventListener('storage', syncTheme);
+    // Escucha cambios de preferencia del sistema
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem('theme')) {
+            syncTheme();
+        }
+    });
+</script>

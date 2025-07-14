@@ -6,6 +6,8 @@ export type Image = {
 export type Link = {
     href: string;
     text: string;
+    target?: '_self' | '_blank';
+    rel?: 'follow' | 'nofollow' | 'noopener' | 'noreferrer';
 };
 
 export type SocialLink = Link & {
@@ -27,14 +29,14 @@ export type Subscribe = {
 };
 
 export type SiteConfig = {
-    logo?: Image;
+    logo: Image;
     title: string;
     description: string;
     image?: Image;
     primaryNavLinks?: Link[];
     secondaryNavLinks?: Link[];
     socialLinks?: SocialLink[];
-    personalLinks?: Link[];
+    personalLinks?: SocialLink[];
     hero?: Hero;
     subscribe?: Subscribe;
     postsPerPage?: number;
@@ -42,42 +44,30 @@ export type SiteConfig = {
 
 const siteConfig: SiteConfig = {
     logo: {
-        src: '/logo.svg',
+        src: '/logo_carlos_batista_8a.png',
         alt: 'Carlos Batista profile photo'
     },
-    title: 'Carlos Batista Blog',
-    description: 'Blog Personal sobre desarrollo de software y tecnología',
+    title: 'Carlos Batista 8a',
+    description: 'Experto en tiendas PrestaShop y Desarrollo web con PHP',
     image: {
         src: '',
-        alt: 'Este Blog usa Astro.js'
+        alt: 'Carlos Batista profile photo'
     },
     primaryNavLinks: [
-        {
-            text: 'Home',
-            href: '/'
-        },
-        {
-            text: 'Artículos',
-            href: '/blog'
-        },
         {
             text: 'About',
             href: '/about'
         },
         {
-            text: 'Contacto',
-            href: '/contact'
+            text: 'Blog',
+            href: '/blog'
         },
         {
-            text: 'Empresa',
-            href: 'https://cubadevops.com'
+            text: 'Contacto',
+            href: '/contact'
         }
     ],
     secondaryNavLinks: [
-        // {
-        //     text: 'About',
-        //     href: '/about'
-        // },
         {
             text: 'Terminos de Uso',
             href: '/terms'
@@ -87,62 +77,49 @@ const siteConfig: SiteConfig = {
             href: '/contact'
         },
         {
-            text: 'Empresa',
-            href: 'https://cubadevops.com'
+            text: 'Deja tu Reseña',
+            href: 'https://n8n.cubadevops.com/form/send-review',
+            target: '_blank',
         }
     ],
     socialLinks: [
         {
             text: 'Conecta en Linkedin',
-            href: 'https://linkedin.com/in/cbatista8a',
-            icon: 'linkedin'
+            href: 'https://www.linkedin.com/mynetwork/discovery-see-all/?usecase=PEOPLE_FOLLOWS&followMember=carlosbatista8a',
+            icon: 'linkedin',
+            target: '_blank'
         },
         {
             text: 'Mira mi GitHub',
             href: 'https://github.com/cbatista8a',
-            icon: 'github'
-        },
-        {
-            text: 'Sigueme en Instagram',
-            href: 'https://instagram.com/carlosbatista8a',
-            icon: 'instagram'
+            icon: 'github',
+            target: '_blank'
         }
     ],
     personalLinks: [
         {
-            href: 'https://cubadevops.com/',
-            text: 'Business'
+            href: '/blog',
+            text: 'Blog',
+            icon: 'dev'
         },
         {
-            href: 'https://carlosbatista.dev/',
-            text: 'Blog'
-        },
-        {
-            href: 'https://linkedin.com/in/cbatista8a',
-            text: 'Linkedin'
+            href: 'https://linkedin.com/in/carlosbatista8a',
+            text: 'Linkedin',
+            icon: 'linkedin',
+            target: '_blank',
         },
         {
             href: 'https://github.com/cbatista8a',
-            text: 'GitHub'
+            text: 'GitHub',
+            icon: 'github',
+            target: '_blank',
         }
     ],
-    hero: {
-        title: 'Blog de Carlos Batista',
-        text: `Aquí hablamos sobre desarrollo de software y tecnologia en general.
-        Y si buscas un experto en Prestashop o Desarrollo Web con PHP, estoy aquí para colaborar en proyectos desafiantes y llevar tu negocio al siguiente nivel.`,
-        avatar: {
-            src: '/avatar.jpg',
-            alt: 'Carlos Batista'
-        },
-        backgroundImage: {
-            src: '/hero.webp'
-        }
-    },
     subscribe: {
-        title: 'Suscríbete a nuestra Newsletter',
-        text: 'Un resumen semanal directamente en tu inbox',
-        formUrl: '#',
-        textBtn: 'Suscríbete'
+        title: 'Deja tu email',
+        text: 'Y te aviso cuando publique un nuevo artículo en el blog.',
+        formUrl: 'https://n8n.cubadevops.com/webhook/newsletter-optin',
+        textBtn: 'Avísame'
     },
     postsPerPage: 5
 };

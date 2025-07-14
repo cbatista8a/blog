@@ -6,36 +6,42 @@ const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = post.data;
 ---
 
-<article class="post-card mb-12 sm:mb-16">
+<article class="post-card mb-12 sm:mb-16 bg-white dark:bg-black rounded-2xl shadow-lg border border-[#FFD43B] dark:border-[#FFD43B] px-6 py-8">
     <header class="post-card-header">
-        <div class="mb-2 text-sm uppercase tracking-wider text-slate-500">
+        <div class="mb-2 text-sm uppercase tracking-wider text-dark dark:text-[#FFD43B] flex items-center gap-2">
             {
                 isFeatured && (
-                    <>
-                        <span class="text-primary">Featured</span>
-                        {' / '}
-                    </>
+                    <span class="font-bold text-[#FFD43B] dark:text-[#FFD43B]">Featured</span>
                 )
             }
+            {isFeatured && <span class="text-[#181A2A] dark:text-[#FFD43B]">/</span>}
             <FormattedDate date={publishDate} />
             {
                 updatedDate && (
-                    <>
-                        {' '}
-                        <span>
-                            (Updated on <FormattedDate date={updatedDate} />)
-                        </span>
-                    </>
+                    <span class="ml-2 text-xs text-[#181A2A] dark:text-[#FFD43B] bg-[#FFD43B]/10 dark:bg-[#181A2A]/20 px-2 py-1 rounded-full">(Actualizado <FormattedDate date={updatedDate} />)</span>
                 )
             }
         </div>
-        <h2 class="text-3xl font-bold text-slate-900"><a href={`/blog/${post.slug}/`}>{title}</a></h2>
+        <h2 class="text-3xl font-bold text-[#181A2A] dark:text-[#FFD43B] sm:text-4xl md:text-5xl transition-colors">
+            <a href={`/blog/${post.slug}/`} class="hover:text-[#FFD43B] dark:hover:text-white">{title}</a>
+        </h2>
     </header>
     {
         featureImage?.src && (
-            <figure class="post-card-thumbnail mt-6 mb-6 xl:mb-0">
-                <a href={`/blog/${post.slug}/`}>
-                    <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+            <figure class="post-card-thumbnail flex items-center justify-center mt-6 mb-6 xl:mb-0">
+                <a href={`/blog/${post.slug}/`} class="flex items-center justify-center w-full no-underline">
+                    <picture class="w-full h-auto">
+                        <source srcset={featureImage.src.replace(/\.(jpg|jpeg|png)$/i, '.webp')} type="image/webp" />
+                        <img
+                            class="w-full rounded-xl border border-[#FFD43B] dark:border-[#FFD43B] shadow-md"
+                            src={featureImage.src}
+                            loading="lazy"
+                            decoding="async"
+                            alt={featureImage.alt || ''}
+                            width="280"
+                            height="125"
+                        />
+                    </picture>
                 </a>
             </figure>
         )
@@ -43,7 +49,7 @@ const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = p
     {
         excerpt && (
             <div class="post-card-content mt-4">
-                <div class="prose prose-slate max-w-none sm:prose-lg">{excerpt}</div>
+                <div class="prose prose-slate max-w-none sm:prose-lg text-[#181A2A] dark:text-white">{excerpt}</div>
             </div>
         )
     }

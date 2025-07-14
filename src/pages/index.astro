@@ -1,60 +1,567 @@
 ---
-import { getCollection } from 'astro:content';
-import NoHeaderLayout from '../layouts/NoHeaderLayout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import FeaturedPostPreview from '../components/FeaturedPostPreview.astro';
-import PostPreview from '../components/PostPreview.astro';
-import siteConfig from '../data/site-config';
-import { sortPostsByDateDesc } from '../utils/post-utils';
-import Subscribe from '../components/Subscribe.astro';
-
-const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
-const featuredPosts = posts.filter(({ data }) => data.isFeatured && !data.draft);
-const latestPosts = posts.filter(({ data }) => !data.isFeatured && !data.draft).slice(0, 3);
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<NoHeaderLayout title="Home" description={siteConfig.description} image={siteConfig.image}>
-    <div class="relative bg-slate-50 border-b border-slate-100 min-h-screen">
-        <Header class="relative" />
-        <Hero />
-    </div>
-    <main class="grow py-12 sm:py-16">
-        {
-            featuredPosts?.length > 0 && (
-                <div class="px-4 mb-12 border-b border-slate-200 sm:px-8 sm:mb-16">
-                    <div class="max-w-6xl mx-auto">
-                        {featuredPosts.map((post) => (
-                            <FeaturedPostPreview post={post} />
-                        ))}
+<BaseLayout
+    title="Experto PrestaShop"
+    description="Hago que tu tienda PrestaShop venda más hoy y escale sin errores mañana. Auditoría, Optimización y Arquitectura a medida."
+    image={{ src: '/avatar.jpg', alt: 'Foto de Carlos Batista' }}
+>
+    {/* Sección del Hero: Presentación y Llamada a la Acción (Objetivo: Atracción - TOFU) */}
+    <section class="relative w-full min-h-[80vh] flex items-center justify-center bg-[#FFD43B] dark:bg-black overflow-hidden">
+        {/* Hero principal: tres columnas en desktop, apilado en móvil */}
+        <div class="relative z-20 flex flex-col md:flex-row items-center justify-around w-full px-2 sm:px-4 md:px-6 py-3 md:py-16 gap-6 md:gap-2">
+            {/* Columna 2: texto */}
+            <div class="flex-1 flex flex-col items-center md:pl-16 md:items-start text-center md:text-left">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-[#181A2A] dark:text-[#FFD43B] mb-4">
+                    OPTIMIZO TIENDAS<br />
+                    <div class="flex justify-center md:justify-start items-center gap-2">
+                        <picture>
+                            <source srcset="/prestashop_logo_transparent.webp" type="image/webp" />
+                            <img
+                                src="/prestashop_logo_transparent.png"
+                                alt="Logo de PrestaShop"
+                                class="w-14 h-14 xs:w-16 xs:h-16 sm:w-20 sm:h-20 rounded-full object-cover z-10 md:-ml-3 relative dark:filter dark:invert"
+                                width="80"
+                                height="80"
+                            />
+                        </picture><span class="-ml-4 sm:-ml-5">RESTASHOP</span>
+                    </div>
+                </h1>
+                <h2 class="text-lg xs:text-xl sm:text-2xl font-semibold text-[#181A2A] dark:text-white mt-2 mb-4">Y luego las ayudo a Escalar</h2>
+                <p class="text-base xs:text-lg md:text-xl text-[#181A2A] dark:text-white mb-8 max-w-xl">
+                    Hago que tu tienda PrestaShop <span class="font-bold">venda más</span> hoy y <span class="font-bold">escale sin errores</span> mañana.
+                </p>
+                <a
+                    href="https://n8n.cubadevops.com/form/guia-de-optimizacion-de-tiendas-prestashop"
+                    target="_blank"
+                    class="inline-block bg-[#181A2A] hover:bg-white text-white hover:text-[#181A2A] dark:bg-[#FFD43B] dark:text-[#181A2A] dark:hover:bg-white dark:hover:text-[#181A2A] font-semibold text-base xs:text-lg rounded-full px-6 xs:px-8 py-2 xs:py-3 transition-all mb-4 shadow-lg"
+                >
+                    Descarga mi Guía de Optimización
+                </a>
+            </div>
+            {/* Columna 3: imagen y especialidad */}
+            <div class="flex-1 flex flex-col items-center justify-center relative order-first md:order-last">
+                <div class="relative flex flex-col items-center w-full h-[60vh] max-h-[30vh] md:max-h-[40vh] lg:max-h-[50vh]">
+                    <picture class="w-auto h-full">
+                        <source
+                            srcset="carlos_batista_milan_portrait_iywdec_c_scale,w_190.webp 425w, carlos_batista_milan_portrait_iywdec_c_scale,w_770.webp 770w, carlos_batista_milan_portrait_iywdec_c_scale,w_960.webp 960w"
+                            sizes="(max-width: 640px) 190px, (max-width: 1024px) 770px, 960px"
+                            type="image/webp"
+                        />
+                        <img
+                            src="carlos_batista_milan_portrait.jpg"
+                            srcset="carlos_batista_milan_portrait_fsbqge_c_scale,w_190.jpg 425w, carlos_batista_milan_portrait_fsbqge_c_scale,w_648.jpg 648w, carlos_batista_milan_portrait_fsbqge_c_scale,w_960.jpg 960w"
+                            sizes="(max-width: 640px) 190px, (max-width: 1024px) 648px, 960px"
+                            alt="Foto de Carlos Batista"
+                            class="w-auto h-full object-cover border-4 border-white dark:border-[#FFD43B] z-10 relative rounded-3xl"
+                            width="640"
+                            height="853"
+                        />
+                    </picture>
+                    <span class="hidden lg:block mt-4 text-[#181A2A] dark:text-[#FFD43B] font-bold text-base xs:text-lg md:text-xl text-center">Especialista en tiendas en crecimiento</span>
+                    <div class="hidden lg:flex items-center mt-2 gap-2 w-full justify-center">
+                        <span class="inline-block text-[#181A2A] dark:text-[#FFD43B] underline text-xs xs:text-sm font-semibold px-3 py-1">Auditoría</span>
+                        <span class="inline-block text-[#181A2A] dark:text-[#FFD43B] underline text-xs xs:text-sm font-semibold px-3 py-1">Optimización</span>
+                        <span class="inline-block text-[#181A2A] dark:text-[#FFD43B] underline text-xs xs:text-sm font-semibold px-3 py-1">Arquitectura</span>
                     </div>
                 </div>
-            )
-        }
-        {
-            latestPosts?.length > 0 && (
-                <div class="px-4 mb-12 sm:px-8 sm:mb-16">
-                    <div class="max-w-3xl mx-auto mb-8 sm:mb-12">
-                        <h2 class="text-sm uppercase tracking-wider text-slate-900 after:content-[''] after:block after:w-16 after:h-px after:bg-primary after:mt-4">
-                            Latest Articles
-                        </h2>
-                    </div>
-                    <div class="max-w-3xl mx-auto xl:max-w-6xl">
-                        {latestPosts.map((post) => (
-                            <PostPreview post={post} />
-                        ))}
-                    </div>
-                    <div class="max-w-3xl mx-auto pt-8 border-t border-slate-200 sm:pt-12">
-                        <a
-                            class="px-8 py-2.5 inline-flex gap-1.5 justify-center items-center font-semibold bg-primary text-white rounded-full transition duration-300 hover:shadow-button"
-                            href="/blog"
-                        >
-                            View All Posts
-                        </a>
+            </div>
+        </div>
+    </section>
+
+    {/* Sección de Explicación del Servicio o Producto (Objetivo: Consideración/Confianza - MOFU) */}
+    <section class="relative min-h-[60vh] md:min-h-[80vh] flex items-center justify-center bg-neutral-50 dark:bg-black overflow-hidden">
+        <svg
+            aria-hidden="true"
+            class="absolute inset-0 z-1 h-full w-full mask-[linear-gradient(to_bottom_left,white_50%,transparent_50%)] fill-neutral-100 stroke-[#ffc10740] dark:stroke-[#ffc10712]"
+        >
+            <rect width="100%" height="100%" fill="url(#pattern-service)" stroke-width="0"></rect>
+            <defs>
+                <pattern id="pattern-service" width="96" height="480" x="50%" patternUnits="userSpaceOnUse" patternTransform="translate(0 -256)" fill="none">
+                    <path
+                        d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52M-136 480h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1-18.883 320h69.766a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 109.117 160H192M-72 640h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 45.117 480h69.766a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A15.999 15.999 0 0 1 173.117 320H256M-200 320h58.883a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A16 16 0 0 1-82.883 160h69.766a16 16 0 0 0 15.69-12.862L29.427 12.862A16 16 0 0 1 45.117 0H128"
+                    ></path>
+                </pattern>
+            </defs>
+        </svg>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:max-w-none">
+                <figure class="mx-auto max-w-4xl">
+                    <blockquote class="relative font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-[#181A2A] dark:text-[#FFD43B] mb-6">¿Qué hago diferente para tu tienda?</h2>
+                        <p class="mt-6 text-center md:text-justify text-lg md:text-xl text-[#181A2A] dark:text-white max-w-2xl mx-auto">
+                            No te ofrezco promesas vacías ni soluciones genéricas. Analizo a fondo tu PrestaShop, identifico los verdaderos cuellos de botella y actúo con precisión para que tu tienda venda más y tú ganes tranquilidad. Trabajo con transparencia, comunicación directa y resultados medibles, siempre enfocado en lo que realmente importa para tu negocio y tu día a día.
+                        </p>
+                    </blockquote>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    {/* Ataque a los Puntos de Dolor del Cliente: Haz que el lector se identifique con su problema */}
+    <section class="min-h-screen flex items-center justify-center mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <div class="mx-auto max-w-2xl lg:max-w-none">
+            <div class="justify-self-end" style="opacity: 1; transform: none;">
+                <h2>
+                    <span class="block font-display tracking-tight text-balance text-4xl font-medium sm:text-5xl text-neutral-950 dark:text-[#FFD43B] text-center">
+                        ¿Te reconoces en alguno de estos puntos?
+                    </span>
+                </h2>
+                <div class="mt-6 text-xl text-neutral-600 dark:text-white text-end mx-auto">
+                    <p>Si alguna de estas situaciones te resulta familiar, no te preocupes: es más común de lo que parece. Aquí no se juzga, se soluciona. Mi trabajo es ayudarte a salir de ese ciclo y llevar tu tienda al siguiente nivel, con total honestidad y sin rodeos.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-8 mt-16 lg:grid-cols-3">
+                <div class="flex" style="opacity: 1; transform: none;">
+                    <article class="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-[#ffd43b] transition hover:bg-neutral-50 dark:hover:bg-[#23263a] sm:p-8 bg-white dark:bg-[#23263a]">
+                        <h3 class="font-display text-2xl font-semibold text-neutral-950 dark:text-[#FFD43B] mb-4">Carga lenta</h3>
+                        <p class="text-base text-neutral-600 dark:text-white">
+                            Tu tienda tarda en cargar y los clientes se desesperan antes de comprar. Cada segundo cuenta y lo sabes.
+                        </p>
+                    </article>
+                </div>
+                <div class="flex" style="opacity: 1; transform: none;">
+                    <article class="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-[#ffd43b] transition hover:bg-neutral-50 dark:hover:bg-[#23263a] sm:p-8 bg-white dark:bg-[#23263a]">
+                        <h3 class="font-display text-2xl font-semibold text-neutral-950 dark:text-[#FFD43B] mb-4">Errores y sustos</h3>
+                        <p class="text-base text-neutral-600 dark:text-white">
+                            Cada actualización es una lotería y los errores aparecen cuando menos lo esperas. La incertidumbre te quita tiempo y energía.
+                        </p>
+                    </article>
+                </div>
+                <div class="flex" style="opacity: 1; transform: none;">
+                    <article class="relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-[#ffd43b] transition hover:bg-neutral-50 dark:hover:bg-[#23263a] sm:p-8 bg-white dark:bg-[#23263a]">
+                        <h3 class="font-display text-2xl font-semibold text-[#181A2A] dark:text-[#FFD43B] mb-4">No escalas</h3>
+                        <p class="text-base text-neutral-600 dark:text-white">
+                            Tu tienda funciona, pero al intentar crecer, la plataforma se queda corta y nadie te ofrece una solución real y sostenible.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Muestra la Transformación o Beneficios Generales: Explica qué logrará el cliente gracias a tu servicio */}
+    <section class="min-h-screen flex flex-col items-center justify-center my-auto mx-auto max-w-7xl py-20 px-6 lg:px-8 dark:bg-black">
+        <div class="w-full lg:max-w-none">
+                <div class="max-w-2xl lg:text-left justify-self-start" style="opacity: 1; transform: none;">
+                    <h2>
+                        <span class="mb-6 block font-display text-base font-semibold text-neutral-950 dark:text-[#FFD43B]">Beneficios</span><span class="sr-only"> - </span><span
+                            class="block font-display tracking-tight text-balance text-4xl font-medium sm:text-5xl text-neutral-950 dark:text-[#FFD43B]"
+                            >¿Qué puedes esperar después de trabajar conmigo?</span>
+                    </h2>
+                    <div class="mt-6 text-xl text-neutral-600 dark:text-white">
+                        <p>
+                            Esto es lo que pasa cuando tu tienda se pone en manos de alguien que sabe lo que hace y no le tiene miedo a los retos.
+                        </p>
                     </div>
                 </div>
-            )
-        }
-        <Subscribe class="px-4 my-12 sm:px-8 sm:my-16" />
-    </main>
-</NoHeaderLayout>
+            </div>
+        </div>
+        <div class="mx-auto max-w-2xl lg:max-w-none mt-16">
+            <div class="lg:flex lg:items-center lg:justify-start">
+                <div class="image flex justify-center lg:w-1/2 lg:justify-start lg:pr-12">
+                    <div class="w-135 flex-none lg:w-180" style="opacity: 1; transform: none;">
+                        <div class="justify-center lg:justify-start relative flex w-full">
+                            <picture class="w-auto h-full max-h-[640px]">
+                                <source
+                                    srcset="/pagespeed_mobile_a54igl_c_scale,w_300.webp 3200w, /pagespeed_mobile_a54igl_c_scale,w_372.webp 372w, /pagespeed_mobile_a54igl_c_scale,w_408.webp 408w"
+                                    sizes="(max-width: 408px) 100vw, 408px"
+                                    type="image/webp"
+                                />
+                                <img
+                                    src="/pagespeed_mobile.png"
+                                    srcset="/pagespeed_mobile_wkv144_c_scale,w_300.png 320w, /pagespeed_mobile_wkv144_c_scale,w_408.png 408w"
+                                    sizes="(max-width: 408px) 100vw, 408px"
+                                    alt="Velocidad y Estabilidad en tu Web"
+                                    class="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px] max-h-[640px] bg-neutral-100 object-cover rounded-3xl"
+                                    width="500"
+                                    height="333"
+                                />
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="text w-full text-justify justify-items-center md:justify-items-end">
+                    <ul role="list" class="text-base text-neutral-600 dark:text-white mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pl-4">
+                        <li class="group mt-10 first:mt-0">
+                            <div style="opacity: 1; transform: none;">
+                                <div
+                                    class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-[#FFD43B] after:bg-neutral-950/10 dark:after:bg-[#FFD43B]/20 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px"
+                                >
+                                    <strong class="font-semibold text-neutral-950 dark:text-[#FFD43B]">Velocidad real. </strong>Tu tienda va a cargar rápido, sin trucos baratos.
+                                    <span class="dark:text-white">Los clientes llegan, compran y repiten.</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="group mt-10 first:mt-0">
+                            <div style="opacity: 1; transform: none;">
+                                <div
+                                    class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-[#FFD43B] after:bg-neutral-950/10 dark:after:bg-[#FFD43B]/20 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px"
+                                >
+                                    <strong class="font-semibold text-neutral-950 dark:text-[#FFD43B]">Estabilidad y confianza. </strong><span class="dark:text-white">Olvídate de los sustos. Tu plataforma será
+                                    sólida, lista para crecer y sin sorpresas desagradables.</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="group mt-10 first:mt-0">
+                            <div style="opacity: 1; transform: none;">
+                                <div
+                                    class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-[#FFD43B] after:bg-neutral-950/10 dark:after:bg-[#FFD43B]/20 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px"
+                                >
+                                    <strong class="font-semibold text-neutral-950 dark:text-[#FFD43B]">Escalabilidad sin miedo. </strong><span class="dark:text-white">Podrás pensar en grande, lanzar campañas y
+                                    crecer sin que la tecnología te ponga freno.</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Presenta los Beneficios Específicos y tu Propuesta de Valor Única: Destaca lo que te diferencia y cómo resuelves sus problemas */}
+    <section class="min-h-screen flex flex-col items-center justify-center my-auto mx-auto max-w-7xl py-20 px-6 lg:px-8 dark:bg-black">
+        <div class="w-full lg:max-w-none">
+            <div class="max-w-2xl lg:text-right justify-self-end" style="opacity: 1; transform: none;">
+                <h2>
+                    <span class="mb-6 block font-display text-base font-semibold text-neutral-950 dark:text-[#FFD43B]">¿Por qué yo y no otro?</span>
+                    <span class="sr-only"> - </span>
+                    <span class="block font-display tracking-tight text-balance text-4xl font-medium sm:text-5xl text-neutral-950 dark:text-[#FFD43B]"
+                        >Lo que me diferencia y cómo resuelvo tus problemas</span>
+                </h2>
+                <div class="mt-6 text-xl text-neutral-600 dark:text-white">
+                    <p>Trabajo con honestidad, creatividad y compromiso real con tu éxito. Aquí no hay excusas, solo resultados.</p>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-2xl lg:max-w-none mt-16">
+            <div class="lg:flex lg:items-center lg:flex-row-reverse lg:justify-end">
+                <div class="image flex justify-center lg:w-1/2 lg:justify-end lg:pl-12">
+                    <div class="w-135 flex-none lg:w-180" style="opacity: 1; transform: none;">
+                        <div class="justify-center lg:justify-end relative flex w-full">
+                            <picture class="w-auto h-full">
+                                <source sizes="(max-width: 1000px) 100vw, 1000px" srcset="carlos_batista_office_portrait_npv8cr_c_scale,w_300.webp 450w,carlos_batista_office_portrait_npv8cr_c_scale,w_710.webp 710w,carlos_batista_office_portrait_npv8cr_c_scale,w_1000.webp 1000w" type="image/webp" />
+                                <img
+                                    src="carlos_batista_office_portrait.jpg"
+                                    srcset="
+                                        carlos_batista_office_portrait_chj3su_c_scale,w_300.jpg 450w,
+                                        carlos_batista_office_portrait_chj3su_c_scale,w_694.jpg 694w,
+                                        carlos_batista_office_portrait_chj3su_c_scale,w_1000.jpg 1000w"
+                                    sizes="(max-width: 1000px) 100vw, 1000px"
+                                    alt="Carlos Batista en su oficina"
+                                    class="w-full max-w-[300px] md:max-w-[340px] lg:max-w-[400px] xl:max-w-[500px] bg-neutral-100 object-cover rounded-3xl"
+                                    width="500"
+                                    height="333"
+                                />
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+                <div class="text w-full text-justify justify-items-center lg:justify-items-start">
+                    <ul role="list" class="text-base text-neutral-600 dark:text-white mt-16 lg:mt-0 lg:w-1/2 lg:min-w-132 lg:pr-4">
+                        <li class="group mt-10 first:mt-0">
+                            <div style="opacity: 1; transform: none;">
+                                <div
+                                    class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-[#FFD43B] after:bg-neutral-950/10 dark:after:bg-[#FFD43B]/20 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px"
+                                >
+                                    <strong class="font-semibold text-neutral-950 dark:text-[#FFD43B]">Diagnóstico sin rodeos. </strong><span class="dark:text-white">Te digo lo que hay, lo que no sirve y lo que
+                                    sí. Sin adornos ni tecnicismos innecesarios.</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="group mt-10 first:mt-0">
+                            <div style="opacity: 1; transform: none;">
+                                <div
+                                    class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-[#FFD43B] after:bg-neutral-950/10 dark:after:bg-[#FFD43B]/20 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px"
+                                >
+                                    <strong class="font-semibold text-neutral-950 dark:text-[#FFD43B]">Soluciones tangibles. </strong><span class="dark:text-white">Creatividad, ingenio y experiencia. Si hay
+                                    que innovar, se innova, pero siempre con calidad y resultados.</span>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="group mt-10 first:mt-0">
+                            <div style="opacity: 1; transform: none;">
+                                <div
+                                    class="pt-10 group-first:pt-0 group-first:before:hidden group-first:after:hidden relative before:absolute after:absolute before:bg-neutral-950 dark:before:bg-[#FFD43B] after:bg-neutral-950/10 dark:after:bg-[#FFD43B]/20 before:top-0 before:left-0 before:h-px before:w-6 after:top-0 after:right-0 after:left-8 after:h-px"
+                                >
+                                    <strong class="font-semibold text-neutral-950 dark:text-[#FFD43B]">Acompañamiento real. </strong><span class="dark:text-white">No te dejo solo después del trabajo. Te
+                                    acompaño hasta que tu tienda esté como debe ser.</span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Resolución de Objeciones: Aborda directamente las posibles dudas del cliente */}
+    <section class="relative min-h-[80vh] flex items-center justify-center bg-neutral-50 dark:bg-black overflow-hidden">
+        <svg
+            aria-hidden="true"
+            class="absolute inset-0 z-1 h-full w-full mask-[linear-gradient(to_bottom_left,white_50%,transparent_60%)] fill-neutral-100 stroke-[#ffc10740] dark:stroke-[#ffc10712]"
+        >
+            <rect width="100%" height="100%" fill="url(#pattern-objeciones)" stroke-width="0"></rect>
+            <defs>
+                <pattern id="pattern-objeciones" width="96" height="480" x="50%" patternUnits="userSpaceOnUse" patternTransform="translate(0 -256)" fill="none">
+                    <path
+                        d="M128 0 98.572 147.138A16 16 0 0 1 82.883 160H13.117a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-45.117 320H-116M64-160 34.572-12.862A16 16 0 0 1 18.883 0h-69.766a16 16 0 0 0-15.69 12.862l-26.855 134.276A16 16 0 0 1-109.117 160H-180M192 160l-29.428 147.138A15.999 15.999 0 0 1 146.883 320H77.117a16 16 0 0 0-15.69 12.862L34.573 467.138A16 16 0 0 1 18.883 480H-52M-136 480h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1-18.883 320h69.766a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 109.117 160H192M-72 640h58.883a16 16 0 0 0 15.69-12.862l26.855-134.276A16 16 0 0 1 45.117 480h69.766a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A15.999 15.999 0 0 1 173.117 320H256M-200 320h58.883a15.999 15.999 0 0 0 15.689-12.862l26.856-134.276A16 16 0 0 1-82.883 160h69.766a16 16 0 0 0 15.69-12.862L29.427 12.862A16 16 0 0 1 45.117 0H128"
+                    ></path>
+                </pattern>
+            </defs>
+        </svg>
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-2xl lg:max-w-none">
+                <figure class="mx-auto max-w-4xl">
+                    <blockquote class="relative font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
+                        <h2 class="text-3xl md:text-4xl font-extrabold text-[#181A2A] dark:text-[#FFD43B] mb-6 text-center">¿Tienes dudas? Aquí no hay letra chiquita</h2>
+                        <ul class="mt-6 text-center md:text-justify text-lg md:text-xl text-[#181A2A] dark:text-white max-w-2xl mx-auto space-y-6">
+                            <li><span class="font-bold">¿Y si no veo resultados?</span> Si no te ayudo a mejorar, no me quedo tranquilo. Mi reputación va primero, y si no cumplo, no cobro el último pago.</li>
+                            <li><span class="font-bold">¿Me vas a dejar tirado después?</span> Para nada. Siempre tendrás mi contacto directo y soporte real, sin robots que contestan al teléfono ni filtros.</li>
+                            <li><span class="font-bold">¿Esto es solo para tiendas grandes?</span> No importa el tamaño, lo que importa es que quieras crecer y hacer las cosas bien (Odio la mediocridad).</li>
+                        </ul>
+                    </blockquote>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    {/* Elementos de Autoridad y Credibilidad (Objetivo: Consideración/Confianza - MOFU) */}
+    <section class="min-h-screen flex items-center justify-center mx-auto max-w-7xl px-6 lg:px-8 bg-white dark:bg-black transition-colors">
+        <div class="mx-auto max-w-2xl lg:max-w-none w-full">
+            <div class="max-w-2xl justify-self-start w-full text-left" style="opacity: 1; transform: none;">
+                <h2>
+                    <span class="block font-display tracking-tight text-balance text-4xl font-medium sm:text-5xl text-neutral-950 dark:text-[#FFD43B] text-left">Confía en la experiencia</span>
+                </h2>
+                <div class="mt-6 text-xl text-neutral-600 dark:text-neutral-200 text-left max-w-2xl mx-0">
+                    <p>Más de una década desarrollando aplicaciones web</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 gap-8 mt-16 md:grid-cols-3">
+                <div class="flex">
+                    <article class="group relative text-white dark:text-black hover:text-black dark:hover:text-[#FFD43B] flex w-full flex-col rounded-3xl p-6 ring-1 ring-[#FFD43B] transition bg-black dark:bg-[#FFD43B] sm:p-8 hover:bg-white dark:hover:bg-black items-center">
+                        <span class="text-4xl font-extrabold text-[#FFD43B] dark:text-black dark:group-hover:text-white mb-2">+5</span>
+                        <p class="text-base text-center">Años ayudando exclusivamente a tiendas PrestaShop a crecer y escalar.</p>
+                    </article>
+                </div>
+                <div class="flex">
+                    <article class="group relative text-white dark:text-black hover:text-black dark:hover:text-[#FFD43B] flex w-full flex-col rounded-3xl p-6 ring-1 ring-[#FFD43B] transition bg-black dark:bg-[#FFD43B] sm:p-8 hover:bg-white dark:hover:bg-black items-center">
+                        <span class="text-4xl font-extrabold text-[#FFD43B] dark:text-black dark:group-hover:text-white mb-2">+20</span>
+                        <p class="text-base text-center">Proyectos de eCommerce complejos implementados</p>
+                    </article>
+                </div>
+                <div class="flex">
+                    <article class="group relative text-white dark:text-black hover:text-black dark:hover:text-[#FFD43B] flex w-full flex-col rounded-3xl p-6 ring-1 ring-[#FFD43B] transition bg-black dark:bg-[#FFD43B] sm:p-8 hover:bg-white dark:hover:bg-black items-center">
+                        <span class="text-4xl font-extrabold text-[#FFD43B] dark:text-black dark:group-hover:text-white mb-2">99%</span>
+                        <p class="text-base text-center">Clientes satisfechos que hoy venden más y duermen tranquilos.<br> PD: Seamos realistas, nadie es perfecto 🤣</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {/* Pruebas Sociales y Testimonios (Objetivo: Consideración/Confianza - MOFU) */}
+    <!-- <section id="testimonials" aria-label="Testimonios de clientes" class="bg-slate-100 dark:bg-black py-20 sm:py-32 transition-colors">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-2xl md:text-center">
+          <h2 class="font-display text-3xl tracking-tight text-slate-900 dark:text-[#FFD43B] sm:text-4xl">Lo que dicen quienes ya confiaron</h2>
+          <p class="mt-4 text-lg tracking-tight text-slate-700 dark:text-white">Clientes reales, resultados reales. Así hablan quienes confiaron en mi trabajo para transformar sus tiendas PrestaShop.</p>
+        </div>
+        <ul role="list" class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
+          <li>
+            <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+              <li>
+                <figure class="group relative rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-xl shadow-slate-900/10 dark:shadow-black/40 border border-transparent dark:border-[#FFD43B] transition-colors">
+                  <svg aria-hidden="true" width="105" height="78" class="absolute top-6 left-6 fill-slate-100 dark:fill-slate-800">
+                    <path d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"></path>
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-[#181A2A] dark:text-white">“Carlos nos salvó la tienda. Ahora todo va rápido y sin errores. El trato fue directo y siempre estuvo ahí para cualquier duda.”</p>
+                  </blockquote>
+                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 dark:border-[#FFD43B]/30 pt-6">
+                    <div>
+                      <div class="font-display text-base text-slate-900 dark:text-[#FFD43B]">Gerente de eCommerce</div>
+                      <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector moda</div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
+                      <picture class="h-14 w-14">
+                        <source srcset="/avatar.webp" type="image/webp" />
+                        <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                      </picture>
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure class="group relative rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-xl shadow-slate-900/10 dark:shadow-black/40 border border-transparent dark:border-[#FFD43B] transition-colors">
+                  <svg aria-hidden="true" width="105" height="78" class="absolute top-6 left-6 fill-slate-100 dark:fill-slate-800">
+                    <path d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"></path>
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-[#181A2A] dark:text-white">“Pensé que mi tienda no tenía solución, pero Carlos encontró el problema y lo arregló sin cuentos. Lo recomiendo a ojos cerrados.”</p>
+                  </blockquote>
+                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 dark:border-[#FFD43B]/30 pt-6">
+                    <div>
+                      <div class="font-display text-base text-slate-900 dark:text-[#FFD43B]">Dueño de tienda</div>
+                      <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector tecnología</div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
+                      <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+              <li>
+                <figure class="group relative rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-xl shadow-slate-900/10 dark:shadow-black/40 border border-transparent dark:border-[#FFD43B] transition-colors">
+                  <svg aria-hidden="true" width="105" height="78" class="absolute top-6 left-6 fill-slate-100 dark:fill-slate-800">
+                    <path d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"></path>
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-[#181A2A] dark:text-white">“Carlos nos salvó la tienda. Ahora todo va rápido y sin errores. El trato fue directo y siempre estuvo ahí para cualquier duda.”</p>
+                  </blockquote>
+                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 dark:border-[#FFD43B]/30 pt-6">
+                    <div>
+                      <div class="font-display text-base text-slate-900 dark:text-[#FFD43B]">Gerente de eCommerce</div>
+                      <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector moda</div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
+                      <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure class="group relative rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-xl shadow-slate-900/10 dark:shadow-black/40 border border-transparent dark:border-[#FFD43B] transition-colors">
+                  <svg aria-hidden="true" width="105" height="78" class="absolute top-6 left-6 fill-slate-100 dark:fill-slate-800">
+                    <path d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"></path>
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-[#181A2A] dark:text-white">“Pensé que mi tienda no tenía solución, pero Carlos encontró el problema y lo arregló sin cuentos. Lo recomiendo a ojos cerrados.”</p>
+                  </blockquote>
+                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 dark:border-[#FFD43B]/30 pt-6">
+                    <div>
+                      <div class="font-display text-base text-slate-900 dark:text-[#FFD43B]">Dueño de tienda</div>
+                      <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector tecnología</div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
+                      <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
+              <li>
+                <figure class="group relative rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-xl shadow-slate-900/10 dark:shadow-black/40 border border-transparent dark:border-[#FFD43B] transition-colors">
+                  <svg aria-hidden="true" width="105" height="78" class="absolute top-6 left-6 fill-slate-100 dark:fill-slate-800">
+                    <path d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"></path>
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-[#181A2A] dark:text-white">“Carlos nos salvó la tienda. Ahora todo va rápido y sin errores. El trato fue directo y siempre estuvo ahí para cualquier duda.”</p>
+                  </blockquote>
+                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 dark:border-[#FFD43B]/30 pt-6">
+                    <div>
+                      <div class="font-display text-base text-slate-900 dark:text-[#FFD43B]">Gerente de eCommerce</div>
+                      <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector moda</div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
+                      <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure class="group relative rounded-2xl bg-white dark:bg-neutral-900 p-6 shadow-xl shadow-slate-900/10 dark:shadow-black/40 border border-transparent dark:border-[#FFD43B] transition-colors">
+                  <svg aria-hidden="true" width="105" height="78" class="absolute top-6 left-6 fill-slate-100 dark:fill-slate-800">
+                    <path d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z"></path>
+                  </svg>
+                  <blockquote class="relative">
+                    <p class="text-lg tracking-tight text-[#181A2A] dark:text-white">“Pensé que mi tienda no tenía solución, pero Carlos encontró el problema y lo arregló sin cuentos. Lo recomiendo a ojos cerrados.”</p>
+                  </blockquote>
+                  <figcaption class="relative mt-6 flex items-center justify-between border-t border-slate-100 dark:border-[#FFD43B]/30 pt-6">
+                    <div>
+                      <div class="font-display text-base text-slate-900 dark:text-[#FFD43B]">Dueño de tienda</div>
+                      <div class="mt-1 text-sm text-slate-500 dark:text-neutral-300">Sector tecnología</div>
+                    </div>
+                    <div class="overflow-hidden rounded-full bg-slate-50 dark:bg-black border-2 border-[#FFD43B]">
+                      <img alt="" loading="lazy" width="56" height="56" decoding="async" class="h-14 w-14 object-cover" src="/avatar.jpg">
+                    </div>
+                  </figcaption>
+                </figure>
+              </li>
+            </ul>
+          </li>
+
+        </ul>
+      </div>
+    </section> -->
+
+    {/* Justificación del Precio y Garantía (Objetivo: Decisión/Venta - BOFU) */}
+    <section class="min-h-screen flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-6 py-6">
+        <div class="bg-[#FFD43B] dark:bg-black p-8 rounded-lg shadow-lg w-full md:w-1/2 self-start text-center md:text-start border border-[#FFD43B] dark:border-[#FFD43B]/60 transition-colors">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6 text-[#181A2A] dark:text-[#FFD43B]">Invertir en tu tienda es invertir en tu tranquilidad</h2>
+            <p class="text-lg text-[#181A2A] dark:text-white mb-6">
+                No se trata solo de vender más, sino de asegurar la base de tu negocio, tu seguridad y la de tu familia. La inacción te mantiene en la incertidumbre, aumentando el estrés y el riesgo constante de perder ventas, reputación y paz mental.<br><br>
+                Cuando inviertes en optimizar tu PrestaShop, subes un escalón en la pirámide: de sobrevivir a prosperar, de apagar fuegos a construir futuro. ¿Cuánto vale dormir tranquilo sabiendo que tu tienda está en manos expertas y tu crecimiento está asegurado?
+            </p>
+        </div>
+
+        {/* Bonus (Opcional) (Objetivo: Decisión/Venta - BOFU) */}
+        <div class="mt-10 bg-[#FFD43B] dark:bg-black p-8 rounded-lg shadow-lg w-full md:w-1/2 self-end text-center md:text-end border border-[#FFD43B] dark:border-[#FFD43B]/60 transition-colors">
+            <h2 class="text-xl md:text-2xl font-bold mb-4 text-[#181A2A] dark:text-[#FFD43B]">Garantía de Soporte Extendido</h2>
+            <ul class="text-lg text-[#181A2A] dark:text-white mb-6 space-y-2 list-none">
+                <li><span class="font-bold">Hotline de Emergencia 30 días:</span> WhatsApp directo para consultas urgentes post-implementación. No te quedas solo, tienes línea directa conmigo para cualquier imprevisto.</li>
+                <li><span class="font-bold">1 Revisión Gratuita:</span> Check-up al tercer mes para validar que todo sigue optimizado y tu tienda sigue rindiendo al máximo.</li>
+            </ul>
+        </div>
+    </section>
+
+    {/*  Llamada a la Acción (CTA - Call to Action) (Objetivo: Decisión/Venta - BOFU) */}
+    <section class="min-h-[80vh] flex flex-col items-center justify-center w-full bg-black px-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white dark:text-[#FFD43B]">¿Listo para vender más y dormir tranquilo?</h2>
+            <p class="text-lg text-white dark:text-neutral-200 mb-8">Contáctame y empecemos a trabajar juntos. No pierdas más tiempo ni ventas.</p>
+            <a
+                href="/contact"
+                target="_self"
+                class="inline-block bg-[#FFD43B] hover:bg-white text-[#181A2A] hover:text-black dark:bg-[#FFD43B] dark:hover:bg-black dark:text-black dark:hover:text-[#FFD43B] font-semibold text-lg rounded-full px-8 py-3 transition-all shadow-lg border border-[#FFD43B] dark:border-[#FFD43B]"
+            >
+                Contáctame ahora
+            </a>
+        </div>
+    </section>
+
+    {/*  Preguntas Frecuentes (FAQ) (Opcional) (Objetivo: Decisión/Venta - BOFU) */}
+    <section class="min-h-[60vh] flex flex-col items-center justify-center max-w-4xl mx-auto py-8 px-6">
+        <h2 class="text-2xl md:text-3xl font-bold text-[#181A2A] dark:text-[#FFD43B] mb-8 text-center">Preguntas frecuentes</h2>
+        <div class="space-y-6 text-[#181A2A] dark:text-white text-base">
+            <div>
+                <span class="font-bold">¿Trabajas solo con PrestaShop?</span> Sí, es mi especialidad. Así garantizo resultados de verdad.
+            </div>
+            <div>
+                <span class="font-bold">¿Que tipo de servicios ofreces?</span> Ofrezco consultoria, optimizacion de rendimiento y bases solidas para escalar tu tienda. Desde la instalación hasta la personalización avanzada, todo lo que necesitas para que tu tienda funcione como un reloj suizo.
+            </div>
+            <div>
+                <span class="font-bold">¿Cuánto tiempo toma ver resultados?</span> Depende del caso, pero la mayoría de mis clientes nota mejoras desde el primer mes.
+            </div>
+        </div>
+        {/* Posdata (P.S.) (Opcional) (Objetivo: Decisión/Venta - BOFU) */}
+        <p class="mt-10 text-base text-[#181A2A] dark:text-white">
+            <strong>P.S.</strong> Si llegaste hasta aquí, es porque de verdad quieres mejorar tu tienda. No lo dejes para mañana, que el momento es ahora.
+            <a
+                href="/contact"
+                target="_self"
+                class="inline-block bg-[#FFD43B] hover:bg-black text-[#181A2A] hover:text-white dark:bg-[#FFD43B] dark:hover:bg-black dark:text-black dark:hover:text-[#FFD43B] font-semibold text-xs rounded-full px-6 py-3 transition-all shadow-lg border border-[#FFD43B] dark:border-[#FFD43B]"
+            >
+                Contáctame ahora
+            </a>
+        </p>
+    </section>
+</BaseLayout>
