@@ -69,17 +69,16 @@ const siteConfig: SiteConfig = {
     ],
     secondaryNavLinks: [
         {
-            text: 'Terminos de Uso',
-            href: '/terms'
-        },
-        {
             text: 'Contacto',
             href: '/contact'
         },
         {
-            text: 'Deja tu Reseña',
-            href: 'https://n8n.cubadevops.com/form/send-review',
-            target: '_blank',
+            text: 'Terminos de Uso',
+            href: '/terms'
+        },
+        {
+            text: 'Politica de Privacidad',
+            href: '/privacy',
         }
     ],
     socialLinks: [
