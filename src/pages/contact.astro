@@ -162,6 +162,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                             >
                             </p>
                         </div>
+                        <div id="captcha" class="mt-2"></div>
                     </form>
                 </div>
             </div>
@@ -258,7 +259,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                         successMsg.classList.add('hidden');
                     }
                 });
+
+                window.renderCaptcha = function () {
+                    console.debug('captcha rendered');
+                    turnstile.render('#captcha', {
+                        sitekey: import.meta.env.PUBLIC_CAPTCHA,
+                        theme: 'light',
+                    });
+                }
+                document.addEventListener('astro:page-load', () => {
+                    if (!document.querySelector('#captcha')) {
+                        renderCaptcha();
+                    }
+                })
             }
         </script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=renderCaptcha" async defer></script>
     </div>
 </BaseLayout>
