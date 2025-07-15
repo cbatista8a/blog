@@ -126,7 +126,7 @@ const { class: className } = Astro.props;
     });
     }
     document.addEventListener('astro:page-load', () => {
-        if (!document.querySelector('#captcha')) {
+        if (document.querySelector('#captcha')?.innerHTML === undefined || document.querySelector('#captcha')?.innerHTML === '') {
             renderCaptcha();
         }
     })
